@@ -20,17 +20,7 @@
 </head>
 <body>
 
-  <!-- Publicidad Superior Leaderboard -->
-  <div class="ad-leaderboard">
-    <div class="ad-wrapper" id="top-ad">
-      <span class="ad-tag">Publicidad</span>
-      <div class="ad-content">
-        <span class="ad-title">Gran Café Alvear</span>
-        <span class="ad-desc">Disfrutá del té de la tarde en un palacio histórico. 15% de descuento mencionando esta web.</span>
-      </div>
-      <a href="#" class="btn btn-accent" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Reservar mesa</a>
-    </div>
-  </div>
+
 
   <!-- Cabecera / Navegación -->
   <header class="main-header">
@@ -41,12 +31,14 @@
       
       <nav class="main-nav" id="main-nav">
         <ul class="nav-links">
-          <li><a href="#" class="active" data-i18n="nav_inicio">Inicio</a></li>
-          <li><a href="#noticias-entrevistas" data-i18n="nav_noticias">Noticias</a></li>
-          <li><a href="#noticias-entrevistas" data-i18n="nav_entrevistas" data-filter-nav="entrevistas">Entrevistas</a></li>
-          <li><a href="#como-participar" data-i18n="nav_participar_link">Participar</a></li>
-          <li><a href="#historia" data-i18n="nav_historia">Historia</a></li>
-          <li><a href="#mapa" data-i18n="nav_mapa">Mapa</a></li>
+          <li><a href="#/inicio" class="active" data-i18n="nav_inicio">Inicio</a></li>
+          <li><a href="#/noticias" data-i18n="nav_noticias">Noticias</a></li>
+          <li><a href="#/agenda" data-i18n="nav_agenda">Agenda</a></li>
+          <li><a href="#/turismo" data-i18n="nav_turismo">Turismo</a></li>
+          <li><a href="#/historia" data-i18n="nav_historia">Historia</a></li>
+          <li><a href="#/tramites" data-i18n="nav_tramites">Trámites</a></li>
+          <li><a href="#/mapa" data-i18n="nav_mapa">Mapa</a></li>
+          <li><a href="#/participar" data-i18n="nav_participar">Participar</a></li>
         </ul>
       </nav>
 
@@ -58,7 +50,7 @@
           <button class="lang-btn" data-lang="pt">PT</button>
         </div>
 
-        <a href="#comunidad" class="btn btn-primary" data-i18n="nav_comunidad">Comunidad</a>
+        <a href="#/participar" class="btn btn-primary" data-i18n="nav_participar">Participar</a>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
           <span></span>
           <span></span>
@@ -68,439 +60,744 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <span class="hero-tag" data-i18n="hero_tag">Corazón de Buenos Aires</span>
-        <h1 class="hero-title" data-i18n="hero_title">Elegancia, cultura e historia viviente</h1>
-        <p class="hero-desc" data-i18n="hero_desc">Explorá las últimas novedades del barrio más distinguido de la ciudad. Conocé su rica arquitectura, sus icónicos gomeros y la voz de sus vecinos.</p>
-        <div class="hero-buttons">
-          <a href="#noticias-entrevistas" class="btn btn-accent" data-i18n="hero_btn_news">Noticias y Entrevistas</a>
-          <a href="#historia" class="btn btn-outline" style="border-color: #fff; color: #fff;" data-i18n="hero_btn_history">Descubrir Historia</a>
+  <!-- VISTA: INICIO -->
+  <div data-route-section="inicio">
+    <!-- Hero Section Editorial -->
+    <section class="hero" style="padding: 4rem 0 3.5rem 0 !important; background: linear-gradient(rgba(28, 25, 23, 0.4), rgba(28, 25, 23, 0.75)), url('hero_recoleta.jpg') no-repeat center center/cover;">
+      <div class="container">
+        <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <span class="hero-tag" data-i18n="hero_tag" style="background-color: var(--primary-color); color: var(--accent-color); font-weight: 800; padding: 0.35rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase;">Portal Vecinal</span>
+          <h1 class="hero-title" data-i18n="hero_title" style="color: #fff; font-size: 3rem; font-weight: 700; font-family: var(--font-title); margin-top: 1.25rem; margin-bottom: 1.25rem; line-height: 1.15;">Recoleta: noticias, agenda, historia y vida barrial</h1>
+          <p class="hero-desc" data-i18n="hero_desc" style="color: #f5f5f4; font-size: 1.15rem; line-height: 1.6; margin-bottom: 2rem;">Un portal para vecinos, visitantes y comercios de la Comuna 2: actualidad, patrimonio, cultura, trámites y recorridos del barrio.</p>
+          <div class="hero-buttons" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="#/noticias" class="btn btn-primary" data-i18n="hero_btn_news">Ver Noticias</a>
+            <a href="#/mapa" class="btn btn-outline" style="border-color: #fff; color: #fff;" data-i18n="hero_btn_map">Explorar Mapa</a>
+          </div>
         </div>
       </div>
-      <!-- Widget: Artículo del Día -->
-      <div class="hero-article-day" id="hero-article-day" style="display:none;">
-        <div class="hero-article-day-label">📖 Nota del día</div>
-        <div class="hero-article-day-title" id="hero-day-title">Cargando...</div>
-        <a href="#biblioteca-notas" id="hero-day-link">Leer nota completa <i data-feather="arrow-right" style="width:12px;height:12px;"></i></a>
+    </section>
+
+    <!-- Dashboard: Hoy en Recoleta -->
+    <div class="container" style="margin-top: -30px; margin-bottom: 3.5rem; position: relative; z-index: 10;">
+      <div class="services-dashboard">
+        <!-- Columna 1: Clima con Fuente -->
+        <div class="dashboard-col" id="dashboard-weather">
+          <div class="dashboard-title">
+            <i data-feather="sun"></i>
+            <span data-i18n="weather_title">Clima en Recoleta</span>
+          </div>
+          <div class="weather-compact">
+            <div id="weather-icon-wrapper-compact">
+              <i data-feather="cloud-sun" style="width: 24px; height: 24px; color: var(--primary-color);"></i>
+            </div>
+            <div>
+              <div class="weather-compact-temp" id="weather-temp-compact">16°C</div>
+              <div class="weather-compact-details" id="weather-status-compact">Cargando...</div>
+            </div>
+          </div>
+          <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem;">
+            Fuente: Open-Meteo API. Act. hace <1h.
+          </div>
+        </div>
+
+        <!-- Columna 2: Agenda Hoy -->
+        <div class="dashboard-col" id="dashboard-agenda">
+          <div class="dashboard-title">
+            <i data-feather="calendar"></i>
+            <span data-i18n="agenda_title">Agenda de Hoy</span>
+          </div>
+          <ul class="agenda-compact-list">
+            <li>
+              <i data-feather="map-pin" style="width:12px; height:12px;"></i>
+              <span data-i18n="agenda_item1"><strong>Feria Plaza Francia:</strong> Fin de semana 10:00 a 20:00 hs.</span>
+            </li>
+            <li>
+              <i data-feather="map-pin" style="width:12px; height:12px;"></i>
+              <span data-i18n="agenda_item2"><strong>Museo Bellas Artes:</strong> Martes a domingos de 11 a 20 hs.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Recomendado o Efeméride -->
+        <div class="dashboard-col" id="dashboard-links">
+          <div class="dashboard-title">
+            <i data-feather="bookmark"></i>
+            <span>Hoy Recomendamos</span>
+          </div>
+          <div style="font-size: 0.8rem; line-height: 1.4; color: var(--text-dark); margin-bottom: 0.5rem;">
+            <strong>Efeméride:</strong> En 1732 se inauguró la Iglesia de Nuestra Señora del Pilar en el barrio.
+          </div>
+          <a href="#/historia" class="dashboard-action-btn">
+            <span>Ver Historia Completa</span>
+            <i data-feather="chevron-right" style="width:12px; height:12px;"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Dashboard de Servicios al Vecino -->
-  <div class="container" style="margin-top: -30px; margin-bottom: 2.5rem; position: relative; z-index: 10;">
-    <div class="services-dashboard">
-      <!-- Columna 1: Clima -->
-      <div class="dashboard-col" id="dashboard-weather">
-        <div class="dashboard-title">
-          <i data-feather="sun"></i>
-          <span data-i18n="weather_title">Clima en Recoleta</span>
-        </div>
-        <div class="weather-compact">
-          <div id="weather-icon-wrapper-compact">
-            <i data-feather="cloud-sun" style="width: 24px; height: 24px; color: var(--primary-color);"></i>
-          </div>
+    <!-- Seccion Perfiles de Públicos -->
+    <section class="section container" style="padding-top: 0 !important;">
+      <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-subtitle">¿Cómo querés vivir el barrio?</span>
+        <h2 class="section-title">Información para Cada Vecino y Visitante</h2>
+      </div>
+
+      <div class="profiles-grid">
+        <!-- Perfil 1: Vecino -->
+        <div class="profile-card">
           <div>
-            <div class="weather-compact-temp" id="weather-temp-compact">16°C</div>
-            <div class="weather-compact-details" id="weather-status-compact">Parcialmente Nublado</div>
+            <div class="profile-icon"><i data-feather="home"></i></div>
+            <h3 class="profile-title">Soy vecino</h3>
+            <p class="profile-desc">Encontrá guías para trámites de la Comuna 2, ubicaciones de salud, puntos verdes de reciclaje y denuncias vecinales.</p>
+          </div>
+          <a href="#/tramites" class="btn btn-outline" style="width:100%;">Trámites y Servicios</a>
+        </div>
+
+        <!-- Perfil 2: Visitante -->
+        <div class="profile-card">
+          <div>
+            <div class="profile-icon"><i data-feather="compass"></i></div>
+            <h3 class="profile-title">Estoy visitando Recoleta</h3>
+            <p class="profile-desc">Explorá los recorridos autoguiados recomendados por Plaza Francia, museos históricos, palacios franceses y mapas turísticos.</p>
+          </div>
+          <a href="#/turismo" class="btn btn-outline" style="width:100%;">Guías Turísticas</a>
+        </div>
+
+        <!-- Perfil 3: Comercio -->
+        <div class="profile-card">
+          <div>
+            <div class="profile-icon"><i data-feather="shopping-bag"></i></div>
+            <h3 class="profile-title">Tengo un comercio / institución</h3>
+            <p class="profile-desc">Publicá tu agenda de eventos, postulá tu local en el mapa interactivo de la comuna o sumate como colaborador del portal.</p>
+          </div>
+          <a href="#/participar" class="btn btn-outline" style="width:100%;">Registrar Novedad</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Nota del Día Editorial (Protagonista) -->
+    <section class="section container" style="padding-top: 0 !important;">
+      <div class="section-header">
+        <span class="section-subtitle">Protagonista de la jornada</span>
+        <h2 class="section-title">La Nota Editorial del Día</h2>
+      </div>
+
+      <div class="featured-note-section" id="featured-day-note-container">
+        <!-- Renderizado dinámico en JS -->
+        <div style="padding: 3rem; text-align: center; color: var(--text-muted);">Cargando editorial...</div>
+       <!-- VISTA: NOTICIAS & BIBLIOTECA -->
+  <div data-route-section="noticias">
+    <!-- Sección Principal: Noticias y Entrevistas + Sidebar con Anuncios -->
+    <section class="section container" id="noticias-entrevistas" style="padding-top: 2rem !important;">
+      <div class="section-header">
+        <span class="section-subtitle" data-i18n="section_news_sub">Actualidad y Testimonios</span>
+        <h2 class="section-title" data-i18n="section_news_title">Noticias y Entrevistas</h2>
+      </div>
+
+      <div class="main-grid">
+        <!-- Grid de Noticias y Entrevistas -->
+        <main>
+          <div class="news-filters">
+            <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todo</button>
+            <button class="filter-btn" data-filter="noticias" data-i18n="filter_news">Noticias</button>
+            <button class="filter-btn" data-filter="entrevistas" data-i18n="filter_interviews">Entrevistas</button>
+            <button class="filter-btn" data-filter="cultura" data-i18n="filter_culture">Cultura</button>
+          </div>
+
+          <div class="news-grid" id="news-container"></div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <!-- Widget RSS Multicontenido -->
+          <div class="sidebar-widget">
+            <h3 class="widget-title" style="display: flex; align-items: center; gap: 0.5rem;">
+              <i data-feather="rss" style="color: var(--accent-hover); width: 18px; height: 18px;"></i> <span data-i18n="rss_multi_title">Canales de Novedades</span>
+            </h3>
+            <div class="rss-tabs" style="display: flex; gap: 0.25rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; flex-wrap: wrap;">
+              <button class="rss-tab-btn active" data-feed="all" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background-color: var(--primary-color); color: #fff; font-weight: 700; cursor: pointer; transition: var(--transition-smooth);">Recoleta</button>
+              <button class="rss-tab-btn" data-feed="cultura" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: var(--transition-smooth);">Cultura</button>
+              <button class="rss-tab-btn" data-feed="historia" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: var(--transition-smooth);">Historia</button>
+              <button class="rss-tab-btn" data-feed="comuna" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: var(--transition-smooth);">Servicios</button>
+            </div>
+            <div class="rss-list" id="rss-container">
+              <div style="text-align: center; padding: 1.5rem 0; color: var(--text-muted);">
+                <p data-i18n="connecting_rss">Conectando...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Publicidad Sidebar 1: Real Recoleta Business (Palacio Duhau) -->
+          <div class="ad-sidebar">
+            <span class="ad-sidebar-tag" data-i18n="ad_partner">Patrocinado</span>
+            <h3 class="ad-sidebar-title">Palacio Duhau</h3>
+            <p class="ad-sidebar-desc" data-i18n="ad_sidebar1_desc">Viví una experiencia de cinco estrellas con té de la tarde tradicional en Av. Alvear 1661.</p>
+            <a href="#" class="btn btn-outline" style="width: 100%; border-color: var(--primary-color);" data-i18n="ad_btn_visit">Reservar Ahora</a>
+          </div>
+
+          <!-- Publicidad Sidebar 2: Real Recoleta Business (El Sanjuanino) -->
+          <div class="ad-sidebar" style="background: linear-gradient(180deg, #182235 0%, #0d131f 100%);">
+            <span class="ad-sidebar-tag" data-i18n="ad_partner">Patrocinado</span>
+            <h3 class="ad-sidebar-title">El Sanjuanino</h3>
+            <p class="ad-sidebar-desc" data-i18n="ad_sidebar2_desc">Las empanadas criollas más famosas y tradicionales del barrio en Posadas 1515.</p>
+            <a href="#" class="btn btn-outline" style="width: 100%; border-color: var(--accent-color); color: #fff;" data-i18n="ad_btn_rates">Ver Menú</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Sección Biblioteca de Artículos y Notas Históricas -->
+    <section class="section" id="biblioteca-notas" style="background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+          <span class="section-subtitle" data-i18n="library_subtitle">Conocimiento y Guías</span>
+          <h2 class="section-title" data-i18n="library_title">Biblioteca de Notas de Recoleta</h2>
+        </div>
+
+        <div class="library-two-panel">
+          <!-- Panel Izquierdo: Índice -->
+          <div class="library-left-panel">
+            <div class="library-search-box">
+              <input type="search" id="library-search" class="library-search-input" placeholder="Buscar artículo..." aria-label="Buscar en la biblioteca">
+            </div>
+            <div class="library-cat-tabs" id="library-cat-tabs">
+              <button class="library-cat-tab active" data-lib-cat="all">
+                <span data-i18n="library_cat_all">Todas las notas</span>
+                <span class="library-cat-badge" id="badge-all">61</span>
+              </button>
+              <button class="library-cat-tab" data-lib-cat="comuna">
+                <span data-i18n="library_cat_comuna">Trámites y Comuna 2</span>
+                <span class="library-cat-badge" id="badge-comuna">0</span>
+              </button>
+              <button class="library-cat-tab" data-lib-cat="cultura">
+                <span data-i18n="library_cat_cultura">Agenda Cultural y Eventos</span>
+                <span class="library-cat-badge" id="badge-cultura">0</span>
+              </button>
+              <button class="library-cat-tab" data-lib-cat="historia">
+                <span data-i18n="library_cat_historia">Patrimonio e Historia</span>
+                <span class="library-cat-badge" id="badge-historia">0</span>
+              </button>
+              <button class="library-cat-tab" data-lib-cat="guias">
+                <span data-i18n="library_cat_guias">Guías de Paseos y Turismo</span>
+                <span class="library-cat-badge" id="badge-guias">0</span>
+              </button>
+            </div>
+            <div class="library-article-list" id="library-article-list">
+              <!-- Cargado dinámicamente por JS -->
+            </div>
+          </div>
+
+          <!-- Panel Derecho: Lector -->
+          <div class="library-right-panel" id="library-right-panel">
+            <div class="library-article-header">
+              <h3 id="library-article-title" style="margin-bottom: 0.5rem;">Seleccioná un artículo para leer</h3>
+              
+              <!-- Barra de metadatos periodísticos -->
+              <div class="library-metadata-bar" id="library-article-meta" style="display: none;">
+                <div class="library-meta-item">
+                  <i data-feather="user"></i>
+                  <span id="lib-meta-author">Redacción Recoleta</span>
+                </div>
+                <div class="library-meta-item">
+                  <i data-feather="calendar"></i>
+                  <span id="lib-meta-date">Actualizado hoy</span>
+                </div>
+                <div class="library-meta-item">
+                  <i data-feather="clock"></i>
+                  <span id="lib-meta-time">5 min</span>
+                </div>
+                <div class="library-meta-item">
+                  <i data-feather="database"></i>
+                  <span id="lib-meta-source">Fuente: GCBA</span>
+                </div>
+              </div>
+
+              <div class="library-article-actions">
+                <button class="library-action-btn" id="lib-btn-random" aria-label="Artículo aleatorio">
+                  <i data-feather="shuffle" style="width:14px;height:14px;"></i>
+                  <span>Aleatorio</span>
+                </button>
+                <button class="library-action-btn" id="lib-btn-share" aria-label="Compartir artículo">
+                  <i data-feather="share-2" style="width:14px;height:14px;"></i>
+                  <span>Compartir</span>
+                </button>
+              </div>
+            </div>
+            <div class="library-article-content" id="library-article-body">
+              <div class="library-empty-state">
+                <i data-feather="book-open" style="width:48px;height:48px;"></i>
+                <p>Elegí una nota de la lista para comenzar a leer.</p>
+              </div>
+            </div>
+            <!-- Botón de reporte de correcciones -->
+            <div class="library-article-footer-links" id="library-article-footer" style="display: none;">
+              <a href="#/participar" class="library-correction-link" id="lib-btn-correction">
+                <i data-feather="alert-circle"></i>
+                <span>Reportar un error o corrección</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- VISTA: AGENDA -->
+  <div data-route-section="agenda">
+    <section class="section" id="seccion-agenda" style="background-color: var(--bg-card); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+          <span class="section-subtitle">Eventos del Barrio</span>
+          <h2 class="section-title">Agenda Cultural Recoleta</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+          <!-- Evento 1 -->
+          <div class="profile-card" style="min-height: auto; border-top: 4px solid var(--primary-color);">
+            <div>
+              <div class="library-meta-item" style="font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-size: 0.75rem;">
+                <i data-feather="calendar" style="width:14px;height:14px;vertical-align:middle;margin-right:2px;"></i> Sábados y Domingos (11:00 - 20:00)
+              </div>
+              <h3 class="profile-title" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Feria de Artesanías en Plaza Francia</h3>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">
+                Más de 300 artesanos calificados exhiben piezas únicas en cuero, metal, madera y platería. Un paseo icónico frente al cementerio con espectáculos a la gorra.
+              </p>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">
+              <strong>Ubicación:</strong> Av. Pueyrredón y Del Libertador
+            </div>
+          </div>
+
+          <!-- Evento 2 -->
+          <div class="profile-card" style="min-height: auto; border-top: 4px solid var(--primary-color);">
+            <div>
+              <div class="library-meta-item" style="font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-size: 0.75rem;">
+                <i data-feather="calendar" style="width:14px;height:14px;vertical-align:middle;margin-right:2px;"></i> Martes a Domingos (11:00 - 20:00)
+              </div>
+              <h3 class="profile-title" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Exposiciones del Centro Cultural Recoleta</h3>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">
+                Muestras de arte visual contemporáneo en salas históricas, recitales acústicos en los patios centrales y programación especial de teatro y danza para el invierno.
+              </p>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">
+              <strong>Ubicación:</strong> Junín 1930
+            </div>
+          </div>
+
+          <!-- Evento 3 -->
+          <div class="profile-card" style="min-height: auto; border-top: 4px solid var(--primary-color);">
+            <div>
+              <div class="library-meta-item" style="font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-size: 0.75rem;">
+                <i data-feather="calendar" style="width:14px;height:14px;vertical-align:middle;margin-right:2px;"></i> Todo el mes (11:00 - 19:00)
+              </div>
+              <h3 class="profile-title" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Colecciones en el Museo de Bellas Artes</h3>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">
+                Recorrido libre por el patrimonio pictórico más importante del continente, con obras maestras de pintores locales e internacionales en exhibición libre.
+              </p>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">
+              <strong>Ubicación:</strong> Av. del Libertador 1473
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem; font-size: 0.75rem; color: var(--text-muted);">
+          Fuente: Ministerio de Cultura y Agenda de la Comuna 2. Actualizado diariamente.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VISTA: TURISMO -->
+  <div data-route-section="turismo">
+    <section class="section" id="seccion-turismo" style="background-color: var(--bg-light); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+          <span class="section-subtitle">Recorridos Recomendados</span>
+          <h2 class="section-title">Recoleta para Visitar: Itinerarios</h2>
+        </div>
+
+        <div class="itineraries-grid">
+          <!-- Itinerario 1: 2 Horas -->
+          <div class="itinerary-card">
+            <img src="plaza_francia_fair.jpg" alt="Itinerario 2 Horas" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">Itinerario: 2 Horas (Básico)</span>
+                <h3 class="itinerary-title">El Corazón Histórico</h3>
+                <p class="itinerary-desc">Especial para visitas cortas. Ingresá al Cementerio de la Recoleta para ver las bóvedas monumentales, visitá la Basílica del Pilar y finalizá con un café histórico en La Biela.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('historico'); }, 500);">Ver Ruta en Mapa</a>
+            </div>
+          </div>
+
+          <!-- Itinerario 2: Medio Día -->
+          <div class="itinerary-card">
+            <img src="ccr_cultural_center.jpg" alt="Itinerario Medio Dia" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">Itinerario: Medio Día</span>
+                <h3 class="itinerary-title">Arte y Naturaleza</h3>
+                <p class="itinerary-desc">Paseá bajo las sombras gigantes del Gomero Histórico de Plaza Francia, visitá las muestras en el Centro Cultural Recoleta y cruzá a contemplar el Museo de Bellas Artes.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('cultural'); }, 500);">Ver Ruta en Mapa</a>
+            </div>
+          </div>
+
+          <!-- Itinerario 3: Con Chicos -->
+          <div class="itinerary-card">
+            <img src="children_book_fair.jpg" alt="Itinerario Con Chicos" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">Itinerario: Familiar</span>
+                <h3 class="itinerary-title">Recoleta con Chicos</h3>
+                <p class="itinerary-desc">Ideal para familias. Paseo al aire libre por los jardines de Plaza Alvear, diversión en la Feria del Libro Infantil (cuando está activa) y helados en Persicco.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('chicos'); }, 500);">Ver Ruta en Mapa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VISTA: TRAMITES -->
+  <div data-route-section="tramites">
+    <section class="section" id="seccion-tramites" style="background-color: var(--bg-card); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+          <span class="section-subtitle">Comuna 2 Recoleta</span>
+          <h2 class="section-title">Guía de Trámites y Servicios al Vecino</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+          <!-- Card 1: Sede Principal -->
+          <div class="profile-card" style="min-height: auto;">
+            <div>
+              <div class="profile-icon"><i data-feather="map-pin"></i></div>
+              <h3 class="profile-title" style="font-size: 1.15rem;">Sede Comunal 2</h3>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 1rem; line-height: 1.5; color: var(--text-dark);">
+                <strong>Dirección:</strong> Pres. José E. Uriburu 1022<br>
+                <strong>Horario:</strong> Lunes a viernes de 8:00 a 15:00 hs.<br>
+                <strong>Servicios:</strong> Licencias de conducir, DNI y Pasaporte, Registro Civil, Rentas (AGIP), Mediación Comunitaria y Defensoría del Consumidor.
+              </p>
+            </div>
+            <a href="https://buenosaires.gob.ar/comuna-2" target="_blank" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 0.5rem 1rem;">Turnos GCBA <i data-feather="external-link" style="width:12px;height:12px;"></i></a>
+          </div>
+
+          <!-- Card 2: Subsede Vicente López -->
+          <div class="profile-card" style="min-height: auto;">
+            <div>
+              <div class="profile-icon"><i data-feather="file-text"></i></div>
+              <h3 class="profile-title" style="font-size: 1.15rem;">Subsede Vicente López</h3>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 1rem; line-height: 1.5; color: var(--text-dark);">
+                <strong>Dirección:</strong> Vicente López 2050 (3° Piso)<br>
+                <strong>Horario:</strong> Lunes a viernes de 8:30 a 15:00 hs.<br>
+                <strong>Servicios:</strong> Gestiones de Arbolado Urbano, Espacios Verdes, Inspección de Obras, Higiene Urbana y Consultas de Catastro Comunal.
+              </p>
+            </div>
+            <a href="https://buenosaires.gob.ar/comunas/subsede-comunal-2" target="_blank" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 0.5rem 1rem;">Consultas Online <i data-feather="external-link" style="width:12px;height:12px;"></i></a>
+          </div>
+
+          <!-- Card 3: Salud y Reclamos 147 -->
+          <div class="profile-card" style="min-height: auto;">
+            <div>
+              <div class="profile-icon"><i data-feather="phone-call"></i></div>
+              <h3 class="profile-title" style="font-size: 1.15rem;">Salud, Emergencias y 147</h3>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 1rem; line-height: 1.5; color: var(--text-dark);">
+                <strong>Emergencias Médicas (SAME):</strong> Llamar al 107<br>
+                <strong>CeSAC N° 22 (Salud Comunal):</strong> Uriburu 1018<br>
+                <strong>Hospital General de Agudos Fernández:</strong> Cerviño 3356<br>
+                <strong>Reclamos y Baches (147):</strong> Llamar al 147 o por WhatsApp al Boti (+54 9 11 5050-0147).
+              </p>
+            </div>
+            <a href="tel:147" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 0.5rem 1rem;">Llamar al 147 <i data-feather="phone" style="width:12px;height:12px;"></i></a>
+          </div>
+        </div>
+
+        <!-- Mensaje de actualización y fuente -->
+        <div style="text-align: center; margin-top: 2rem; font-size: 0.75rem; color: var(--text-muted);">
+          Fuente: Sede Comunal 2 & GCBA. Datos actualizados en Julio 2026.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VISTA: HISTORIA -->
+  <div data-route-section="historia">
+    <!-- Sección Historia con Carrusel de Imágenes Locales -->
+    <section class="section section-dark" id="historia">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="section_history_sub">Patrimonio Histórico</span>
+          <h2 class="section-title" data-i18n="section_history_title">El Recorrido del Tiempo</h2>
+        </div>
+
+        <div class="history-layout">
+          <!-- Carrusel Interactivo -->
+          <div class="history-slider">
+            <div class="slider-container" id="slider-container">
+              <!-- Slide 1 -->
+              <div class="slide-item">
+                <img src="slide_derecho.jpg" alt="Facultad de Derecho UBA">
+                <div class="slide-caption">
+                  <h4 data-i18n="slide1_title">Facultad de Derecho</h4>
+                  <p data-i18n="slide1_desc">El monumental edificio neoclásico inaugurado en 1949, un emblema de la educación y el civismo nacional.</p>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="slide-item">
+                <img src="slide_floralis.jpg" alt="Floralis Genérica en Plaza de las Naciones Unidas">
+                <div class="slide-caption">
+                  <h4 data-i18n="slide2_title">Floralis Genérica</h4>
+                  <p data-i18n="slide2_desc">La escultura metálica gigante que abre y cierra sus pétalos con la luz solar, símbolo de la vanguardia barrial.</p>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="slide-item">
+                <img src="slide_gomero.jpg" alt="Gomeros Históricos en Plaza Francia">
+                <div class="slide-caption">
+                  <h4 data-i18n="slide3_title">El Gomero de la Recoleta</h4>
+                  <p data-i18n="slide3_desc">Plantados en el siglo XIX, sus ramas gigantescas y raíces esculpen el paisaje verde del barrio.</p>
+                </div>
+              </div>
+              <!-- Slide 4 -->
+              <div class="slide-item">
+                <img src="slide_paris.jpg" alt="Sede social o arquitectura típica">
+                <div class="slide-caption">
+                  <h4 data-i18n="slide4_title">La "París de Sudamérica"</h4>
+                  <p data-i18n="slide4_desc">Esquinas y palacetes aristocráticos que recrean la arquitectura clásica francesa del siglo XIX.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controles del Slider -->
+            <div class="slider-controls">
+              <button class="slider-btn" id="prev-slide" aria-label="Anterior"><i data-feather="chevron-left"></i></button>
+              <button class="slider-btn" id="next-slide" aria-label="Siguiente"><i data-feather="chevron-right"></i></button>
+            </div>
+            <!-- Dots de navegación -->
+            <div class="slider-dots" id="slider-dots">
+              <button class="slider-dot active" data-slide="0" aria-label="Slide 1"></button>
+              <button class="slider-dot" data-slide="1" aria-label="Slide 2"></button>
+              <button class="slider-dot" data-slide="2" aria-label="Slide 3"></button>
+              <button class="slider-dot" data-slide="3" aria-label="Slide 4"></button>
+            </div>
+          </div>
+
+          <!-- Texto Histórico -->
+          <div class="history-text">
+            <h3 style="font-size: 2.2rem; line-height: 1.25; margin-bottom: 1rem;" data-i18n="history_title_text">Un barrio con alma propia</h3>
+            <p class="history-p" data-i18n="history_p1">El barrio debe su nombre a los padres recoletos de la Orden de los Franciscanos Descalzos, quienes a comienzos del siglo XVIII se establecieron en la zona fundando un convento y la iglesia de Nuestra Señora del Pilar, la cual aún hoy se yergue esplendorosa.</p>
+            <p class="history-p" data-i18n="history_p2">Con la epidemia de fiebre amarilla de 1871, las familias más acaudaladas migraron desde el sur de la ciudad hacia el norte, eligiendo Recoleta por su altura y salubridad. Construyeron magníficos palacios de inspiración francesa, muchos de ellos hoy embajadas, hoteles de gran lujo o monumentos históricos.</p>
+            <a href="#" class="btn btn-accent" style="align-self: flex-start; margin-top: 1rem;" data-i18n="history_btn_gallery">Explorar Galería Completa</a>
+          </div>
+        </div>
+
+        <!-- Banner de Comercios Locales (Sponsors) -->
+        <div class="sponsor-banner">
+          <h4 class="sponsor-title" data-i18n="sponsor_title">Comercios Locales que nos apoyan</h4>
+          <div class="sponsor-grid">
+            <div class="sponsor-card">
+              <div class="sponsor-card-icon"><i data-feather="coffee" style="width:20px;height:20px;"></i></div>
+              <span class="sponsor-card-name">La Biela</span>
+            </div>
+            <div class="sponsor-card">
+              <div class="sponsor-card-icon"><i data-feather="book" style="width:20px;height:20px;"></i></div>
+              <span class="sponsor-card-name">Ateneo<br>Grand Splendid</span>
+            </div>
+            <div class="sponsor-card">
+              <div class="sponsor-card-icon"><i data-feather="shopping-bag" style="width:20px;height:20px;"></i></div>
+              <span class="sponsor-card-name">Heladería<br>Persicco</span>
+            </div>
+            <div class="sponsor-card">
+              <div class="sponsor-card-icon"><i data-feather="award" style="width:20px;height:20px;"></i></div>
+              <span class="sponsor-card-name">Buller<br>Brewing Co.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VISTA: MAPA -->
+  <div data-route-section="mapa">
+    <!-- Sección Mapa de la Comuna -->
+    <section class="section container" id="mapa" style="padding-top: 2rem !important;">
+      <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-subtitle" data-i18n="section_map_sub">Explorá el Barrio</span>
+        <h2 class="section-title" data-i18n="section_map_title">Mapa de la Comuna 2</h2>
+      </div>
+
+      <!-- Filtros de Recorridos Recomendados (Itinerarios) -->
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-dark); align-self: center; margin-right: 0.5rem;">Itinerarios Temáticos:</span>
+        <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 6px;" onclick="selectMapItinerary('historico')"><i data-feather="compass" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Histórico</button>
+        <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 6px;" onclick="selectMapItinerary('cultural')"><i data-feather="image" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Cultural</button>
+        <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 6px;" onclick="selectMapItinerary('chicos')"><i data-feather="smile" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Con Chicos</button>
+        <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 6px;" onclick="selectMapItinerary('gratis')"><i data-feather="sun" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Gratis</button>
+        <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-color: var(--primary-color); border-radius: 6px;" onclick="clearMapItinerary()"><i data-feather="trash-2" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Limpiar Ruta</button>
+      </div>
+      
+      <!-- Filtros del Mapa por Categorías -->
+      <div class="map-filters" id="map-filters-container" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
+        <button class="map-filter-btn active" data-map-filter="all" style="background-color: var(--primary-color); color: #fff; border: 1px solid var(--primary-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 600;">Todos (100)</button>
+        <button class="map-filter-btn" data-map-filter="educacion" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Educación</button>
+        <button class="map-filter-btn" data-map-filter="embajada" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Embajadas y Palacios</button>
+        <button class="map-filter-btn" data-map-filter="cultura" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Cultura y Templos</button>
+        <button class="map-filter-btn" data-map-filter="plazas" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Plazas y Monumentos</button>
+        <button class="map-filter-btn" data-map-filter="gastronomia" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Gastronomía</button>
+        <button class="map-filter-btn" data-map-filter="salud" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Salud</button>
+        <button class="map-filter-btn" data-map-filter="compras" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Paseos y Hoteles</button>
+      </div>
+
+      <!-- Wrapper del Mapa con Ficha Lateral -->
+      <div class="map-wrapper-layout">
+        <!-- Leaflet Map Container -->
+        <div id="mapa-comunal" style="z-index: 1;"></div>
+
+        <!-- Ficha de Detalles en Sidebar -->
+        <div class="map-sidebar-details" id="map-point-details">
+          <div class="map-sidebar-empty" id="map-sidebar-empty-state">
+            <i data-feather="map-pin" style="width: 40px; height: 40px;"></i>
+            <h4 style="font-family: var(--font-title); font-size: 1.1rem; color: var(--accent-color); margin-top: 0.5rem; margin-bottom: 0.5rem;">Explorá los Puntos</h4>
+            <p style="font-size: 0.8rem; line-height: 1.4;">Hacé clic en cualquier marcador del mapa para ver los detalles históricos, fotos y cómo llegar.</p>
+          </div>
+          <div id="map-sidebar-content-state" style="display: none;">
+            <h3 class="map-point-title" id="sidebar-point-title" style="margin-top: 0;">Nombre del Lugar</h3>
+            <span class="map-point-category" id="sidebar-point-category">Categoría</span>
+            <p class="map-point-desc" id="sidebar-point-desc" style="color: var(--text-dark); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem;">Descripción detallada...</p>
+            <a href="#" target="_blank" class="btn btn-primary" id="sidebar-point-directions" style="width: 100%; font-size: 0.8rem; padding: 0.6rem 1rem; gap: 0.35rem;">
+              <i data-feather="navigation" style="width:14px;height:14px;"></i> Cómo Llegar
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Columna 2: Agenda -->
-      <div class="dashboard-col" id="dashboard-agenda">
-        <div class="dashboard-title">
-          <i data-feather="calendar"></i>
-          <span data-i18n="agenda_title">Agenda Recoleta</span>
-        </div>
-        <ul class="agenda-compact-list">
-          <li>
-            <i data-feather="map-pin" style="width:12px; height:12px; margin-top:2px;"></i>
-            <span data-i18n="agenda_item1"><strong>Feria de Plaza Francia:</strong> Sábados y domingos de 10:00 a 20:00 hs.</span>
-          </li>
-          <li>
-            <i data-feather="map-pin" style="width:12px; height:12px; margin-top:2px;"></i>
-            <span data-i18n="agenda_item2"><strong>Museo de Bellas Artes:</strong> Entrada libre de martes a domingos.</span>
-          </li>
-        </ul>
+      <div class="map-legend" id="map-legend">
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#2563eb;"></div>Educación</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#d97706;"></div>Embajadas</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#7c3aed;"></div>Cultura</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#059669;"></div>Plazas</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#dc2626;"></div>Gastronomía</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#0891b2;"></div>Salud</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#e5b800;"></div>Hoteles</div>
       </div>
+      <div style="text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.75rem;">
+        <p><i data-feather="map-pin" style="width: 14px; height: 14px; vertical-align: middle; color: var(--accent-hover);"></i> <span data-i18n="map_caption">Comuna 2: Puntos destacados de <strong>Universidades, Embajadas, Cultura y Gastronomía</strong>. Fuente: Sede Comunal 2 & GCBA. Actualizado en Julio 2026.</span></p>
+      </div>
+    </section>
+  </div>
 
-      <!-- Columna 3: Accesos Rápidos de Trámites -->
-      <div class="dashboard-col" id="dashboard-links">
-        <div class="dashboard-title">
-          <i data-feather="external-link"></i>
-          <span>Trámites Rápidos</span>
+  <!-- VISTA: PARTICIPAR -->
+  <div data-route-section="participar">
+    <!-- Sección Generar Contenido (Comunidad) -->
+    <section class="section container" id="comunidad" style="padding-top: 2rem !important;">
+      <div class="contribution-layout">
+        <div class="contribution-info">
+          <span class="section-subtitle" data-i18n="section_comunidad_sub">Voz Vecinal</span>
+          <h3 data-i18n="section_comunidad_title" style="font-size: 2.2rem; font-family: var(--font-title); margin-bottom: 1rem; color: var(--accent-color);">¿Tenés una historia o novedad sobre Recoleta?</h3>
+          <p data-i18n="comunidad_desc" style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.6;">Este espacio digital es construido por y para los vecinos. Si presenciaste un evento, tenés fotos históricas guardadas o querés dar a conocer un comercio local, compartilo con la comunidad.</p>
+          
+          <ul class="benefit-list">
+            <li><i data-feather="check-circle" style="color: var(--primary-color);"></i> <span data-i18n="comunidad_benefit_1">Publicación en nuestra sección de novedades</span></li>
+            <li><i data-feather="check-circle" style="color: var(--primary-color);"></i> <span data-i18n="comunidad_benefit_2">Difusión a miles de vecinos del barrio</span></li>
+            <li><i data-feather="check-circle" style="color: var(--primary-color);"></i> <span data-i18n="comunidad_benefit_3">Ayuda a preservar la memoria e identidad de Recoleta</span></li>
+          </ul>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;">
+            <h4 style="font-family: var(--font-title); font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--accent-color);">¿Prefectura o contacto directo?</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem;">Envianos tu novedad directamente por WhatsApp para una revisión inmediata de nuestra redacción.</p>
+            <button class="btn btn-outline" id="whatsapp-direct-btn" style="width: 100%; border-color: #25d366; color: #128c7e; gap: 0.5rem; font-size: 0.85rem;">
+              <i data-feather="message-circle" style="color: #25d366;"></i> Enviar por WhatsApp
+            </button>
+          </div>
         </div>
-        <div class="dashboard-actions">
-          <a href="#como-participar" class="dashboard-action-btn">
-            <span>Guía de Trámites</span>
-            <i data-feather="chevron-right" style="width:12px; height:12px;"></i>
-          </a>
-          <a href="#mapa" class="dashboard-action-btn">
-            <span>Ubicaciones de la Comuna 2</span>
-            <i data-feather="chevron-right" style="width:12px; height:12px;"></i>
-          </a>
+
+        <!-- Formulario de Envío de Contenido -->
+        <div class="form-wrapper">
+          <form id="contrib-form">
+            <div class="form-group">
+              <label for="contrib-name" data-i18n="form_name_label">Tu nombre / Vecino</label>
+              <input type="text" id="contrib-name" class="form-control" placeholder="Ej. Juan Pérez" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="contrib-title" data-i18n="form_title_label">Título del Contenido</label>
+              <input type="text" id="contrib-title" class="form-control" placeholder="¿De qué trata tu novedad?" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="contrib-category" data-i18n="form_cat_label">Categoría</label>
+                <select id="contrib-category" class="form-control" required>
+                  <option value="" disabled selected data-i18n="form_cat_placeholder">Seleccionar</option>
+                  <option value="noticias" data-i18n="form_cat_noticia">Noticia / Actualidad</option>
+                  <option value="entrevistas" data-i18n="form_cat_entrevista">Entrevista / Testimonio</option>
+                  <option value="cultura" data-i18n="form_cat_cultura">Cultura / Agenda</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contrib-date">Fecha del Suceso</label>
+                <input type="date" id="contrib-date" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contrib-location">Ubicación / Lugar de Recoleta</label>
+              <input type="text" id="contrib-location" class="form-control" placeholder="Ej. Plaza Francia, Av. Alvear 1600..." required>
+            </div>
+
+            <div class="form-group">
+              <label for="contrib-image">Adjuntar Imagen (Opcional)</label>
+              <input type="file" id="contrib-image" class="form-control" accept="image/*" style="padding: 0.4rem;">
+            </div>
+
+            <div class="form-group">
+              <label for="contrib-text" data-i18n="form_msg_label">Mensaje / Detalle de la Noticia</label>
+              <textarea id="contrib-text" class="form-control" placeholder="Contanos tu historia en detalle..." required style="height: 100px;"></textarea>
+            </div>
+
+            <div class="form-group" style="display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 1rem;">
+              <input type="checkbox" id="contrib-terms" required style="margin-top: 0.25rem; cursor: pointer;">
+              <label for="contrib-terms" style="font-size: 0.78rem; color: var(--text-muted); cursor: pointer; line-height: 1.4;">
+                Autorizo la publicación de este contenido en el feed del portal. Entiendo que la publicación queda sujeta a revisión editorial.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="form-submit-btn" data-i18n="form_submit">Enviar Propuesta</button>
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; line-height: 1.3;">
+              ⚠️ La publicación de novedades está sujeta a verificación editorial para cuidar la calidad del portal.
+            </div>
+          </form>
+          <div class="form-success-overlay" id="form-success">
+            <div class="form-success-icon"><i data-feather="check-circle" style="width:30px;height:30px;"></i></div>
+            <h4 style="color: var(--accent-color);">¡Gracias, vecino!</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Tu propuesta fue recibida. La revisaremos y te contactaremos pronto.</p>
+            <button class="btn btn-outline" onclick="document.getElementById('form-success').classList.remove('visible'); document.getElementById('contrib-form').style.display='block'; document.getElementById('contrib-form').reset();" style="margin-top:0.5rem;">Enviar otra</button>
+          </div>
         </div>
       </div>
+    </section>
+  </div>
+
+  <!-- Publicidad Leaderboard (Sponsor acompañando al pie de página) -->
+  <div class="ad-leaderboard" style="margin-top: 3.5rem; margin-bottom: 0;">
+    <div class="ad-wrapper" id="top-ad">
+      <span class="ad-tag" data-i18n="ad_text">Publicidad</span>
+      <div class="ad-content">
+        <span class="ad-title">La Biela</span>
+        <span class="ad-desc">Disfrutá del café de los poetas frente a Plaza Francia. 10% de descuento presentando este portal.</span>
+      </div>
+      <a href="#" class="btn btn-accent" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;" data-i18n="ad_btn_visit">Ver Menú</a>
     </div>
   </div>
 
-  <!-- Sección Principal: Noticias y Entrevistas + Sidebar con Anuncios -->
-  <section class="section container" id="noticias-entrevistas" style="padding-top: 0 !important;">
-    <div class="section-header">
-      <span class="section-subtitle" data-i18n="section_news_sub">Actualidad y Testimonios</span>
-      <h2 class="section-title" data-i18n="section_news_title">Noticias y Entrevistas</h2>
-    </div>
-
-    <div class="main-grid">
-      <!-- Grid de Noticias y Entrevistas -->
-      <main>
-        <div class="news-filters">
-          <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todo</button>
-          <button class="filter-btn" data-filter="noticias" data-i18n="filter_news">Noticias</button>
-          <button class="filter-btn" data-filter="entrevistas" data-i18n="filter_interviews">Entrevistas</button>
-          <button class="filter-btn" data-filter="cultura" data-i18n="filter_culture">Cultura</button>
-        </div>
-
-        <div class="news-grid" id="news-container"></div>
-      </main>
-
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <!-- Widget RSS Multicontenido -->
-        <div class="sidebar-widget">
-          <h3 class="widget-title" style="display: flex; align-items: center; gap: 0.5rem;">
-            <i data-feather="rss" style="color: var(--accent-hover); width: 18px; height: 18px;"></i> <span data-i18n="rss_multi_title">Canales de Novedades</span>
-          </h3>
-          <div class="rss-tabs" style="display: flex; gap: 0.25rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; flex-wrap: wrap;">
-            <button class="rss-tab-btn active" data-feed="all" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background-color: var(--primary-color); color: #fff; font-weight: 700; cursor: pointer; transition: var(--transition-smooth);">Recoleta</button>
-            <button class="rss-tab-btn" data-feed="cultura" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: var(--transition-smooth);">Cultura</button>
-            <button class="rss-tab-btn" data-feed="historia" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: var(--transition-smooth);">Historia</button>
-            <button class="rss-tab-btn" data-feed="comuna" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: var(--transition-smooth);">Servicios</button>
-          </div>
-          <div class="rss-list" id="rss-container">
-            <div style="text-align: center; padding: 1.5rem 0; color: var(--text-muted);">
-              <p data-i18n="connecting_rss">Conectando...</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Publicidad Sidebar 1: Real Recoleta Business (Palacio Duhau) -->
-        <div class="ad-sidebar">
-          <span class="ad-sidebar-tag" data-i18n="ad_partner">Patrocinado</span>
-          <h3 class="ad-sidebar-title">Palacio Duhau</h3>
-          <p class="ad-sidebar-desc" data-i18n="ad_sidebar1_desc">Viví una experiencia de cinco estrellas con té de la tarde tradicional en Av. Alvear 1661.</p>
-          <a href="#" class="btn btn-outline" style="width: 100%; border-color: var(--primary-color);" data-i18n="ad_btn_visit">Reservar Ahora</a>
-        </div>
-
-        <!-- Publicidad Sidebar 2: Real Recoleta Business (El Sanjuanino) -->
-        <div class="ad-sidebar" style="background: linear-gradient(180deg, #182235 0%, #0d131f 100%);">
-          <span class="ad-sidebar-tag" data-i18n="ad_partner">Patrocinado</span>
-          <h3 class="ad-sidebar-title">El Sanjuanino</h3>
-          <p class="ad-sidebar-desc" data-i18n="ad_sidebar2_desc">Las empanadas criollas más famosas y tradicionales del barrio en Posadas 1515.</p>
-          <a href="#" class="btn btn-outline" style="width: 100%; border-color: var(--accent-color); color: #fff;" data-i18n="ad_btn_rates">Ver Menú</a>
-        </div>
-      </aside>
-  </section>
-
-  <!-- Sección Proceso de Participación - Estilo generalab.ar -->
-  <section class="section genera-process-section" id="como-participar">
-    <div class="container">
-      <div class="section-header" style="text-align: left; margin-bottom: 3rem;">
-        <h2 class="wp-block-heading" data-i18n="process_section_title" style="color: #fff; font-size: 2.2rem; margin: 0;">Cómo participar del portal de Recoleta</h2>
-      </div>
-      
-      <div class="process-grid">
-        <!-- Paso 1 -->
-        <div class="process-column">
-          <div class="process-icon-wrapper">
-            <i data-feather="book-open"></i>
-          </div>
-          <h4 data-i18n="process_step1_title" style="color: #fff; margin: 0.5rem 0;">1. Informate y leé</h4>
-          <p data-i18n="process_step1_desc">Recibí las noticias locales y entrevistas del barrio en tiempo real y enterate de todo.</p>
-        </div>
-        
-        <!-- Paso 2 -->
-        <div class="process-column">
-          <div class="process-icon-wrapper">
-            <i data-feather="edit-3"></i>
-          </div>
-          <h4 data-i18n="process_step2_title" style="color: #fff; margin: 0.5rem 0;">2. Proponé novedades</h4>
-          <p data-i18n="process_step2_desc">Enviá tus propias historias, fotos o anuncios de comercios para que se publiquen en el portal.</p>
-        </div>
-        
-        <!-- Paso 3 -->
-        <div class="process-column">
-          <div class="process-icon-wrapper">
-            <i data-feather="map-pin"></i>
-          </div>
-          <h4 data-i18n="process_step3_title" style="color: #fff; margin: 0.5rem 0;">3. Explorá el mapa</h4>
-          <p data-i18n="process_step3_desc">Navegá las 100 ubicaciones estratégicas de la comuna 2 y descubrí su cultura y gastronomía.</p>
-        </div>
-        
-        <!-- Paso 4 -->
-        <div class="process-column">
-          <div class="process-icon-wrapper">
-            <i data-feather="mail"></i>
-          </div>
-          <h4 data-i18n="process_step4_title" style="color: #fff; margin: 0.5rem 0;">4. Sumate al boletín</h4>
-          <p data-i18n="process_step4_desc">Suscribite con tu correo electrónico para recibir resúmenes semanales directamente en tu casilla.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Biblioteca de Artículos y Notas Históricas -->
-  <section class="section" id="biblioteca-notas" style="background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-    <div class="container">
-      <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
-        <span class="section-subtitle" data-i18n="library_subtitle">Conocimiento y Guías</span>
-        <h2 class="section-title" data-i18n="library_title">Biblioteca de Notas de Recoleta</h2>
-      </div>
-
-      <div class="library-two-panel">
-        <!-- Panel Izquierdo: Índice -->
-        <div class="library-left-panel">
-          <div class="library-search-box">
-            <input type="search" id="library-search" class="library-search-input" placeholder="Buscar artículo..." aria-label="Buscar en la biblioteca">
-          </div>
-          <div class="library-cat-tabs" id="library-cat-tabs">
-            <button class="library-cat-tab active" data-lib-cat="all">
-              <span data-i18n="library_cat_all">Todas las notas</span>
-              <span class="library-cat-badge" id="badge-all">61</span>
-            </button>
-            <button class="library-cat-tab" data-lib-cat="comuna">
-              <span data-i18n="library_cat_comuna">Trámites y Comuna 2</span>
-              <span class="library-cat-badge" id="badge-comuna">0</span>
-            </button>
-            <button class="library-cat-tab" data-lib-cat="cultura">
-              <span data-i18n="library_cat_cultura">Agenda Cultural y Eventos</span>
-              <span class="library-cat-badge" id="badge-cultura">0</span>
-            </button>
-            <button class="library-cat-tab" data-lib-cat="historia">
-              <span data-i18n="library_cat_historia">Patrimonio e Historia</span>
-              <span class="library-cat-badge" id="badge-historia">0</span>
-            </button>
-            <button class="library-cat-tab" data-lib-cat="guias">
-              <span data-i18n="library_cat_guias">Guías de Paseos y Turismo</span>
-              <span class="library-cat-badge" id="badge-guias">0</span>
-            </button>
-          </div>
-          <div class="library-article-list" id="library-article-list">
-            <!-- Cargado dinámicamente por JS -->
-          </div>
-        </div>
-
-        <!-- Panel Derecho: Lector -->
-        <div class="library-right-panel" id="library-right-panel">
-          <div class="library-article-header">
-            <h3 id="library-article-title">Seleccioná un artículo para leer</h3>
-            <div class="library-article-actions">
-              <button class="library-action-btn" id="lib-btn-random" aria-label="Artículo aleatorio">
-                <i data-feather="shuffle" style="width:14px;height:14px;"></i>
-                <span>Aleatorio</span>
-              </button>
-              <button class="library-action-btn" id="lib-btn-share" aria-label="Compartir artículo">
-                <i data-feather="share-2" style="width:14px;height:14px;"></i>
-                <span>Compartir</span>
-              </button>
-            </div>
-          </div>
-          <div class="library-article-content" id="library-article-body">
-            <div class="library-empty-state">
-              <i data-feather="book-open" style="width:48px;height:48px;"></i>
-              <p>Elegí una nota de la lista para comenzar a leer.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Historia con Carrusel de Imágenes Locales -->
-  <section class="section section-dark" id="historia">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle" data-i18n="section_history_sub">Patrimonio Histórico</span>
-        <h2 class="section-title" data-i18n="section_history_title">El Recorrido del Tiempo</h2>
-      </div>
-
-      <div class="history-layout">
-        <!-- Carrusel Interactivo -->
-        <div class="history-slider">
-          <div class="slider-container" id="slider-container">
-            <!-- Slide 1 -->
-            <div class="slide-item">
-              <img src="slide_derecho.jpg" alt="Facultad de Derecho UBA">
-              <div class="slide-caption">
-                <h4 data-i18n="slide1_title">Facultad de Derecho</h4>
-                <p data-i18n="slide1_desc">El monumental edificio neoclásico inaugurado en 1949, un emblema de la educación y el civismo nacional.</p>
-              </div>
-            </div>
-            <!-- Slide 2 -->
-            <div class="slide-item">
-              <img src="slide_floralis.jpg" alt="Floralis Genérica en Plaza de las Naciones Unidas">
-              <div class="slide-caption">
-                <h4 data-i18n="slide2_title">Floralis Genérica</h4>
-                <p data-i18n="slide2_desc">La escultura metálica gigante que abre y cierra sus pétalos con la luz solar, símbolo de la vanguardia barrial.</p>
-              </div>
-            </div>
-            <!-- Slide 3 -->
-            <div class="slide-item">
-              <img src="slide_gomero.jpg" alt="Gomeros Históricos en Plaza Francia">
-              <div class="slide-caption">
-                <h4 data-i18n="slide3_title">El Gomero de la Recoleta</h4>
-                <p data-i18n="slide3_desc">Plantados en el siglo XIX, sus ramas gigantescas y raíces esculpen el paisaje verde del barrio.</p>
-              </div>
-            </div>
-            <!-- Slide 4 -->
-            <div class="slide-item">
-              <img src="slide_paris.jpg" alt="Sede social o arquitectura típica">
-              <div class="slide-caption">
-                <h4 data-i18n="slide4_title">La "París de Sudamérica"</h4>
-                <p data-i18n="slide4_desc">Esquinas y palacetes aristocráticos que recrean la arquitectura clásica francesa del siglo XIX.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Controles del Slider -->
-          <div class="slider-controls">
-            <button class="slider-btn" id="prev-slide" aria-label="Anterior"><i data-feather="chevron-left"></i></button>
-            <button class="slider-btn" id="next-slide" aria-label="Siguiente"><i data-feather="chevron-right"></i></button>
-          </div>
-          <!-- Dots de navegación -->
-          <div class="slider-dots" id="slider-dots">
-            <button class="slider-dot active" data-slide="0" aria-label="Slide 1"></button>
-            <button class="slider-dot" data-slide="1" aria-label="Slide 2"></button>
-            <button class="slider-dot" data-slide="2" aria-label="Slide 3"></button>
-            <button class="slider-dot" data-slide="3" aria-label="Slide 4"></button>
-          </div>
-        </div>
-
-        <!-- Texto Histórico -->
-        <div class="history-text">
-          <h3 style="font-size: 2.2rem; line-height: 1.25; margin-bottom: 1rem;" data-i18n="history_title_text">Un barrio con alma propia</h3>
-          <p class="history-p" data-i18n="history_p1">El barrio debe su nombre a los padres recoletos de la Orden de los Franciscanos Descalzos, quienes a comienzos del siglo XVIII se establecieron en la zona fundando un convento y la iglesia de Nuestra Señora del Pilar, la cual aún hoy se yergue esplendorosa.</p>
-          <p class="history-p" data-i18n="history_p2">Con la epidemia de fiebre amarilla de 1871, las familias más acaudaladas migraron desde el sur de la ciudad hacia el norte, eligiendo Recoleta por su altura y salubridad. Construyeron magníficos palacios de inspiración francesa, muchos de ellos hoy embajadas, hoteles de gran lujo o monumentos históricos.</p>
-          <a href="#" class="btn btn-accent" style="align-self: flex-start; margin-top: 1rem;" data-i18n="history_btn_gallery">Explorar Galería Completa</a>
-        </div>
-      </div>
-
-      <!-- Banner de Comercios Locales (Sponsors) -->
-      <div class="sponsor-banner">
-        <h4 class="sponsor-title" data-i18n="sponsor_title">Comercios Locales que nos apoyan</h4>
-        <div class="sponsor-grid">
-          <div class="sponsor-card">
-            <div class="sponsor-card-icon"><i data-feather="coffee" style="width:20px;height:20px;"></i></div>
-            <span class="sponsor-card-name">La Biela</span>
-          </div>
-          <div class="sponsor-card">
-            <div class="sponsor-card-icon"><i data-feather="book" style="width:20px;height:20px;"></i></div>
-            <span class="sponsor-card-name">Ateneo<br>Grand Splendid</span>
-          </div>
-          <div class="sponsor-card">
-            <div class="sponsor-card-icon"><i data-feather="shopping-bag" style="width:20px;height:20px;"></i></div>
-            <span class="sponsor-card-name">Heladería<br>Persicco</span>
-          </div>
-          <div class="sponsor-card">
-            <div class="sponsor-card-icon"><i data-feather="award" style="width:20px;height:20px;"></i></div>
-            <span class="sponsor-card-name">Buller<br>Brewing Co.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Mapa de la Comuna -->
-  <section class="section container" id="mapa">
-    <div class="section-header">
-      <span class="section-subtitle" data-i18n="section_map_sub">Explorá el Barrio</span>
-      <h2 class="section-title" data-i18n="section_map_title">Mapa de la Comuna 2</h2>
-    </div>
-    
-    <!-- Filtros del Mapa -->
-    <div class="map-filters" id="map-filters-container" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
-      <button class="map-filter-btn active" data-map-filter="all" style="background-color: var(--primary-color); color: #fff; border: 1px solid var(--primary-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 600;">Todos (100)</button>
-      <button class="map-filter-btn" data-map-filter="educacion" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Educación</button>
-      <button class="map-filter-btn" data-map-filter="embajada" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Embajadas y Palacios</button>
-      <button class="map-filter-btn" data-map-filter="cultura" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Cultura y Templos</button>
-      <button class="map-filter-btn" data-map-filter="plazas" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Plazas y Monumentos</button>
-      <button class="map-filter-btn" data-map-filter="gastronomia" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Gastronomía</button>
-      <button class="map-filter-btn" data-map-filter="salud" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Salud</button>
-      <button class="map-filter-btn" data-map-filter="compras" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Paseos y Hoteles</button>
-    </div>
-
-    <div id="mapa-comunal"></div>
-    <div class="map-legend" id="map-legend">
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#2563eb;"></div>Educación</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#d97706;"></div>Embajadas</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#7c3aed;"></div>Cultura</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#059669;"></div>Plazas</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#dc2626;"></div>Gastronomía</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#0891b2;"></div>Salud</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#e5b800;"></div>Hoteles</div>
-    </div>
-    <div style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem;">
-      <p><i data-feather="map-pin" style="width: 14px; height: 14px; vertical-align: middle; color: var(--accent-hover);"></i> <span data-i18n="map_caption">Comuna 2: Puntos destacados de <strong>Universidades, Embajadas, Cultura y Gastronomía</strong>.</span></p>
-    </div>
-  </section>
-
-  <!-- Sección Generar Contenido (Comunidad) -->
-  <section class="section container" id="comunidad">
-    <div class="contribution-layout">
-      <div class="contribution-info">
-        <span class="section-subtitle" data-i18n="section_comunidad_sub">Voz Vecinal</span>
-        <h3 data-i18n="section_comunidad_title">¿Tenés una historia o novedad sobre Recoleta?</h3>
-        <p data-i18n="comunidad_desc">Este espacio digital es construido por y para los vecinos. Si presenciaste un evento, tenés fotos históricas guardadas o querés dar a conocer un comercio local, compartilo con la comunidad.</p>
-        
-        <ul class="benefit-list">
-          <li><i data-feather="check-circle"></i> <span data-i18n="comunidad_benefit_1">Publicación en nuestra sección de novedades</span></li>
-          <li><i data-feather="check-circle"></i> <span data-i18n="comunidad_benefit_2">Difusión a miles de vecinos del barrio</span></li>
-          <li><i data-feather="check-circle"></i> <span data-i18n="comunidad_benefit_3">Ayuda a preservar la memoria e identidad de Recoleta</span></li>
-        </ul>
-      </div>
-
-      <!-- Formulario de Envío de Contenido -->
-      <div class="form-wrapper">
-        <form id="contrib-form">
-          <div class="form-group">
-            <label for="contrib-name" data-i18n="form_name_label">Tu nombre / Vecino</label>
-            <input type="text" id="contrib-name" class="form-control" placeholder="Ej. Juan Pérez" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="contrib-title" data-i18n="form_title_label">Título del Contenido</label>
-            <input type="text" id="contrib-title" class="form-control" placeholder="¿De qué trata tu novedad?" required>
-          </div>
-
-          <div class="form-group">
-            <label for="contrib-category" data-i18n="form_cat_label">Categoría</label>
-            <select id="contrib-category" class="form-control" required>
-              <option value="" disabled selected data-i18n="form_cat_placeholder">Selecciona una opción</option>
-              <option value="noticias" data-i18n="form_cat_noticia">Noticia / Actualidad</option>
-              <option value="entrevistas" data-i18n="form_cat_entrevista">Entrevista / Testimonio</option>
-              <option value="cultura" data-i18n="form_cat_cultura">Cultura / Agenda</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="contrib-text" data-i18n="form_msg_label">Mensaje / Detalle de la Noticia</label>
-            <textarea id="contrib-text" class="form-control" placeholder="Contanos tu historia en detalle..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width: 100%;" id="form-submit-btn" data-i18n="form_submit">Enviar Propuesta</button>
-        </form>
-        <div class="form-success-overlay" id="form-success">
-          <div class="form-success-icon"><i data-feather="check-circle" style="width:30px;height:30px;"></i></div>
-          <h4 style="color: var(--accent-color);">¡Gracias, vecino!</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Tu propuesta fue recibida. La revisaremos y te contactaremos pronto.</p>
-          <button class="btn btn-outline" onclick="document.getElementById('form-success').classList.remove('visible'); document.getElementById('contrib-form').style.display='block'; document.getElementById('contrib-form').reset();" style="margin-top:0.5rem;">Enviar otra</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Botón Fijo Mobile para enviar novedad -->
+  <button class="mobile-sticky-btn" onclick="window.location.hash = '#/participar';">
+    <i data-feather="plus-circle"></i>
+    <span data-i18n="nav_enviar_novedad">Enviar novedad</span>
+  </button>
 
   <!-- Footer -->
   <footer class="main-footer">

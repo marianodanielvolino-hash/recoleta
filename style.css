@@ -1,29 +1,29 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Mulish:ital,wght@0,300..900;1,300..900&display=swap');
 
-/* Variables de Diseño - Identidad Recoleta (Azul Marino y Amarillo Dorado) */
+/* Variables de Diseño - Identidad Recoleta Editorial (Dorado Viejo, Negro Suave, Verde Plaza, Blanco Cálido) */
 :root {
-  --primary-color: #E5B800;       /* Amarillo Dorado/Oscuro */
-  --primary-light: #C69E00;      /* Amarillo Hover */
-  --accent-color: #0f1e36;       /* Azul Marino Premium */
-  --accent-hover: #1e3a8a;       /* Azul Medio */
-  --eggplant-color: #081120;     /* Azul Ultra Oscuro (Secciones oscuras) */
-  --cyan-color: #3b82f6;         /* Celeste de apoyo */
-  --text-dark: #1e293b;          /* Slate 800 */
-  --text-muted: #64748b;         /* Slate 500 */
-  --bg-light: #f8fafc;           /* Slate 50 */
+  --primary-color: #c29b00;       /* Dorado viejo */
+  --primary-light: #b08900;      /* Dorado hover */
+  --accent-color: #1c1917;       /* Negro suave */
+  --accent-hover: #292524;       /* Negro medio */
+  --eggplant-color: #0c0a09;     /* Negro piedra muy oscuro */
+  --cyan-color: #15803d;         /* Verde plaza */
+  --text-dark: #292524;          /* Soft black text */
+  --text-muted: #78716c;         /* Gris piedra text */
+  --bg-light: #fafaf9;           /* Blanco cálido */
   --bg-card: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.95);
-  --border-color: #e2e8f0;       /* Slate 200 */
+  --bg-glass: rgba(250, 250, 249, 0.95);
+  --border-color: #e7e5e4;       /* Borde suave piedra */
   
-  --font-title: 'Mulish', system-ui, -apple-system, sans-serif;
+  --font-title: 'Merriweather', 'Georgia', serif; /* Tipografía editorial */
   --font-body: 'Mulish', system-ui, -apple-system, sans-serif;
   
   --transition-smooth: all 0.25s ease-in-out;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
-  --shadow-premium: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.08);
+  --shadow-premium: 0 20px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Reset y Base */
@@ -1836,4 +1836,401 @@ textarea.form-control {
     margin-bottom: 2rem;
   }
 }
+
+/* ============================================
+   PORTAL HIGHLIGHTS & ROUTING VIEWS
+   ============================================ */
+
+/* Enrutador de secciones (SPA) */
+[data-route-section] {
+  display: none;
+}
+
+body.route-inicio [data-route-section="inicio"],
+body.route-noticias [data-route-section="noticias"],
+body.route-agenda [data-route-section="agenda"],
+body.route-turismo [data-route-section="turismo"],
+body.route-historia [data-route-section="historia"],
+body.route-tramites [data-route-section="tramites"],
+body.route-mapa [data-route-section="mapa"],
+body.route-participar [data-route-section="participar"] {
+  display: block !important;
+}
+
+/* Ajustes de espaciados */
+.section-margin {
+  margin-bottom: 3.5rem;
+}
+
+/* Botón fijo Mobile */
+.mobile-sticky-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  box-shadow: 0 4px 20px rgba(194, 155, 0, 0.4);
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.mobile-sticky-btn:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .mobile-sticky-btn {
+    display: flex;
+  }
+}
+
+/* Accesos por perfiles de público */
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.profile-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.profile-icon {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(194, 155, 0, 0.12);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.profile-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.profile-title {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 0.75rem;
+}
+
+.profile-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Nota Editorial Destacada Principal */
+.featured-note-section {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.featured-note-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.featured-note-img-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.featured-note-img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+}
+
+.featured-note-content {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.featured-note-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  font-weight: 600;
+}
+
+.featured-note-title {
+  font-size: 2.2rem;
+  font-family: var(--font-title);
+  line-height: 1.2;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.featured-note-excerpt {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .featured-note-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-note-img {
+    min-height: 250px;
+    height: 250px;
+  }
+  .featured-note-content {
+    padding: 2rem;
+  }
+  .featured-note-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Itinerarios de Turismo */
+.itineraries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.itinerary-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.itinerary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.itinerary-img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.itinerary-info {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itinerary-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.itinerary-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.itinerary-meta {
+  font-size: 0.75rem;
+  color: var(--cyan-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.25rem;
+}
+
+/* Layout del Mapa Comunal con Ficha Lateral */
+.map-wrapper-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 1.5rem;
+  height: 520px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#mapa-comunal {
+  height: 100% !important;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.map-sidebar-details {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: var(--shadow-sm);
+}
+
+.map-sidebar-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-muted);
+  height: 100%;
+  padding: 1rem;
+}
+
+.map-sidebar-empty svg {
+  margin-bottom: 1rem;
+  color: var(--border-color);
+}
+
+.map-point-title {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  color: var(--accent-color);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.map-point-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.map-point-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .map-wrapper-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  #mapa-comunal {
+    height: 400px !important;
+  }
+  .map-sidebar-details {
+    min-height: 200px;
+  }
+}
+
+/* Mejoras del Panel Lector de la Biblioteca */
+.library-metadata-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.library-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.library-meta-item svg {
+  width: 14px;
+  height: 14px;
+}
+
+.library-article-footer-links {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.library-correction-link {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.library-correction-link:hover {
+  color: var(--accent-color);
+}
+
 

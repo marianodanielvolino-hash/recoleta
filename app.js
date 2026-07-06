@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     es: {
       nav_inicio: "Inicio",
       nav_noticias: "Noticias",
-      nav_entrevistas: "Entrevistas",
-      nav_participar_link: "Participar",
-      nav_como_participar: "Cómo Participar",
-      nav_biblioteca: "Notas del Barrio",
+      nav_agenda: "Agenda",
+      nav_turismo: "Turismo",
       nav_historia: "Historia",
+      nav_tramites: "Trámites",
       nav_mapa: "Mapa",
-      nav_comunidad: "Comunidad",
       nav_participar: "Participar",
+      nav_enviar_novedad: "Enviar novedad",
+      hero_btn_map: "Explorar Mapa",
       hero_tag: "Corazón de Buenos Aires",
       hero_title: "Elegancia, cultura e historia viviente",
       hero_desc: "Explorá las últimas novedades del barrio más distinguido de la ciudad. Conocé su rica arquitectura, sus icónicos gomeros y la voz de sus vecinos.",
@@ -111,14 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
     en: {
       nav_inicio: "Home",
       nav_noticias: "News",
-      nav_entrevistas: "Interviews",
-      nav_participar_link: "Participate",
-      nav_como_participar: "How to Participate",
-      nav_biblioteca: "Neighborhood Notes",
+      nav_agenda: "Events",
+      nav_turismo: "Tourism",
       nav_historia: "History",
+      nav_tramites: "Services",
       nav_mapa: "Map",
-      nav_comunidad: "Community",
-      nav_participar: "Get Involved",
+      nav_participar: "Participate",
+      nav_enviar_novedad: "Submit news",
+      hero_btn_map: "Explore Map",
       hero_tag: "Heart of Buenos Aires",
       hero_title: "Elegance, culture, and living history",
       hero_desc: "Explore the latest news from the most distinguished neighborhood in the city. Discover its rich architecture, iconic rubber trees, and the voice of its neighbors.",
@@ -218,14 +218,14 @@ document.addEventListener('DOMContentLoaded', () => {
     pt: {
       nav_inicio: "Início",
       nav_noticias: "Notícias",
-      nav_entrevistas: "Entrevistas",
-      nav_participar_link: "Participar",
-      nav_como_participar: "Como Participar",
-      nav_biblioteca: "Notas do Bairro",
+      nav_agenda: "Agenda",
+      nav_turismo: "Turismo",
       nav_historia: "História",
+      nav_tramites: "Serviços",
       nav_mapa: "Mapa",
-      nav_comunidad: "Comunidade",
       nav_participar: "Participar",
+      nav_enviar_novedad: "Enviar novidade",
+      hero_btn_map: "Explorar Mapa",
       hero_tag: "Coração de Buenos Aires",
       hero_title: "Elegância, cultura e história viva",
       hero_desc: "Explore as últimas novidades do bairro mais distinto da cidade. Conheça sua rica arquitetura, seus icônicos seringais e a voz de seus vizinhos.",
@@ -955,30 +955,69 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: "Pasaje del Temple", category: "compras", desc_es: "Pasaje adoquinado escondido entre edificios residenciales.", coords: [-34.5985, -58.3948] }
     ];
 
+    const categoryColors = {
+      educacion: '#2563eb',
+      embajada: '#d97706',
+      cultura: '#7c3aed',
+      plazas: '#059669',
+      gastronomia: '#dc2626',
+      salud: '#0891b2',
+      compras: '#c29b00'
+    };
+
     pointsData.forEach(point => {
       if (activeFilter === 'all' || point.category === activeFilter) {
+        const markerColor = categoryColors[point.category] || '#c29b00';
         const circleMarker = L.circleMarker(point.coords, {
           radius: 8,
-          fillColor: '#E5B800', // Amarillo Dorado
-          color: '#0f1e36',     // Azul Marino
+          fillColor: markerColor,
+          color: '#1c1917',
           weight: 2,
           opacity: 1,
-          fillOpacity: 0.95
+          fillOpacity: 0.9
         });
 
         const catLabel = categoryLabels[lang][point.category] || point.category;
         const desc = point[`desc_${lang}`] || point.desc_es;
 
         const popupContent = `
-          <div class="map-popup-title">${point.name}</div>
-          <span class="map-popup-category">${catLabel}</span>
-          <div class="map-popup-desc">${desc}</div>
+          <div class="map-popup-title" style="font-weight:700;margin-bottom:2px;">${point.name}</div>
+          <span class="map-popup-category" style="font-size:0.7rem;text-transform:uppercase;color:${markerColor};font-weight:700;">${catLabel}</span>
         `;
 
         circleMarker.bindPopup(popupContent);
+        
+        // Clic en marcador para rellenar la ficha lateral
+        circleMarker.on('click', () => {
+          const emptyState = document.getElementById('map-sidebar-empty-state');
+          const contentState = document.getElementById('map-sidebar-content-state');
+          const titleEl = document.getElementById('sidebar-point-title');
+          const catEl = document.getElementById('sidebar-point-category');
+          const descEl = document.getElementById('sidebar-point-desc');
+          const directionsBtn = document.getElementById('sidebar-point-directions');
+
+          if (emptyState) emptyState.style.display = 'none';
+          if (contentState) contentState.style.display = 'block';
+
+          if (titleEl) titleEl.innerText = point.name;
+          if (catEl) {
+            catEl.innerText = catLabel;
+            catEl.style.backgroundColor = markerColor;
+            catEl.style.color = '#fff';
+          }
+          if (descEl) descEl.innerText = desc;
+          if (directionsBtn) {
+            directionsBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${point.coords[0]},${point.coords[1]}`;
+          }
+        });
+
         markersLayer.addLayer(circleMarker);
       }
     });
+
+    // Guardar los datos de puntos globalmente para los itinerarios
+    window.mapPointsData = pointsData;
+    window.mapCategoryLabels = categoryLabels;
   }
 
   // 11. FORMULARIO DE ENVÍO DE CONTENIDO VECINAL (Novedades en vivo)
@@ -1085,9 +1124,37 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!article) return;
       currentArticle = article;
       titleEl.textContent = article.title;
+
+      // Calcular metadata periodística
+      const words = article.content.join(' ').split(' ').length;
+      const mins = Math.ceil(words / 180);
+      
+      let sourceName = "Portal Recoleta";
+      if (article.category === 'comuna') sourceName = "Sede Comunal 2 & GCBA";
+      else if (article.category === 'cultura') sourceName = "Centro Cultural Recoleta";
+      else if (article.category === 'historia') sourceName = "Archivo Histórico Nacional";
+      else if (article.category === 'guias') sourceName = "Ente de Turismo GCBA";
+
+      const metaBar = document.getElementById('library-article-meta');
+      const metaAuthor = document.getElementById('lib-meta-author');
+      const metaDate = document.getElementById('lib-meta-date');
+      const metaTime = document.getElementById('lib-meta-time');
+      const metaSource = document.getElementById('lib-meta-source');
+      const libFooter = document.getElementById('library-article-footer');
+
+      if (metaBar) metaBar.style.display = 'flex';
+      if (metaAuthor) metaAuthor.textContent = "Redacción Recoleta";
+      if (metaDate) metaDate.textContent = "Julio 2026";
+      if (metaTime) metaTime.textContent = `${mins} min`;
+      if (metaSource) metaSource.textContent = sourceName;
+      if (libFooter) libFooter.style.display = 'flex';
+
       bodyEl.innerHTML = '<div class="library-article-content">' +
         article.content.map(para => {
           if (!para.trim()) return '';
+          if (para.startsWith('##')) {
+            return '<h3 style="font-family: var(--font-title); font-size: 1.3rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--accent-color);">' + para.replace('##', '').trim() + '</h3>';
+          }
           if (para.startsWith('**') && para.endsWith('**')) {
             return '<p><strong>' + para.replace(/\*\*/g, '') + '</strong></p>';
           } else if (para.includes('**')) {
@@ -1096,6 +1163,13 @@ document.addEventListener('DOMContentLoaded', () => {
           return '<p>' + para + '</p>';
         }).join('') +
       '</div>';
+
+      // Configurar enlace de corrección
+      const btnCorrection = document.getElementById('lib-btn-correction');
+      if (btnCorrection) {
+        btnCorrection.href = `#/participar?report=true&title=${encodeURIComponent(article.title)}`;
+      }
+
       if (typeof feather !== 'undefined') feather.replace();
     }
 
@@ -1119,11 +1193,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = document.createElement('div');
         item.className = 'library-article-item' + (i === 0 && !currentArticle ? ' active' : '');
         if (currentArticle && art.title === currentArticle.title) item.classList.add('active');
-        item.textContent = art.title;
+        
+        const preview = art.content && art.content.length > 0
+          ? art.content[0].substring(0, 80) + '...'
+          : '';
+        const catLabels = { comuna: 'Comuna 2', cultura: 'Cultura', historia: 'Historia', guias: 'Turismo' };
+        const catText = catLabels[art.category] || 'General';
+
+        item.innerHTML = `
+          <div style="font-size: 0.65rem; text-transform: uppercase; font-weight: 700; color: var(--primary-color); margin-bottom: 0.25rem;">${catText}</div>
+          <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 0.25rem; line-height: 1.3; color: #fff;">${art.title}</div>
+          <div style="font-size: 0.72rem; color: rgba(255,255,255,0.6); line-height: 1.4;">${preview}</div>
+        `;
+
         item.addEventListener('click', () => {
           document.querySelectorAll('.library-article-item').forEach(el => el.classList.remove('active'));
           item.classList.add('active');
           renderArticleContent(art);
+          
+          // Desplazar lector a la vista en mobile
+          const rightPanel = document.getElementById('library-right-panel');
+          if (rightPanel && window.innerWidth <= 768) {
+            rightPanel.scrollIntoView({ behavior: 'smooth' });
+          }
         });
         listEl.appendChild(item);
       });
@@ -1229,29 +1321,319 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 16. FORMULARIO MEJORADO CON FEEDBACK VISUAL
+  // 16. ITINERARIOS TURÍSTICOS CON POLILÍNEAS EN LEAFLET MAP
+  let activePolyline = null;
+
+  function selectMapItinerary(itineraryName) {
+    if (!mapInstance || !window.mapPointsData) return;
+
+    // Quitar polilínea anterior si existía
+    if (activePolyline) {
+      mapInstance.removeLayer(activePolyline);
+      activePolyline = null;
+    }
+
+    const itineraryPoints = {
+      historico: ["Cementerio de la Recoleta", "Basílica de Nuestra Señora del Pilar", "La Biela"],
+      cultural: ["El Gomero de la Recoleta", "Centro Cultural Recoleta", "Museo Nacional de Bellas Artes"],
+      chicos: ["Plaza Intendente Alvear", "Centro Cultural Recoleta", "Heladería Persicco"],
+      gratis: ["Facultad de Derecho UBA", "Floralis Genérica", "Parque Thays"]
+    };
+
+    const targetNames = itineraryPoints[itineraryName];
+    if (!targetNames) return;
+
+    const filtered = window.mapPointsData.filter(p => targetNames.includes(p.name));
+    // Ordenar de acuerdo a la secuencia del recorrido
+    filtered.sort((a, b) => targetNames.indexOf(a.name) - targetNames.indexOf(b.name));
+
+    if (filtered.length === 0) return;
+
+    const latlngs = filtered.map(p => p.coords);
+
+    // Dibujar la polilínea con estilo dorado y trazos discontinuos
+    activePolyline = L.polyline(latlngs, {
+      color: 'var(--primary-color)',
+      weight: 4,
+      opacity: 0.85,
+      dashArray: '8, 8'
+    }).addTo(mapInstance);
+
+    // Encuadrar el mapa para mostrar toda la polilínea
+    mapInstance.fitBounds(activePolyline.getBounds(), { padding: [40, 40] });
+
+    // Rellenar automáticamente la ficha lateral con el primer punto del recorrido
+    const firstPoint = filtered[0];
+    const catLabel = window.mapCategoryLabels[currentLang][firstPoint.category] || firstPoint.category;
+    const desc = firstPoint[`desc_${currentLang}`] || firstPoint.desc_es;
+
+    const emptyState = document.getElementById('map-sidebar-empty-state');
+    const contentState = document.getElementById('map-sidebar-content-state');
+    const titleEl = document.getElementById('sidebar-point-title');
+    const catEl = document.getElementById('sidebar-point-category');
+    const descEl = document.getElementById('sidebar-point-desc');
+    const directionsBtn = document.getElementById('sidebar-point-directions');
+
+    if (emptyState) emptyState.style.display = 'none';
+    if (contentState) contentState.style.display = 'block';
+
+    if (titleEl) titleEl.innerText = firstPoint.name;
+    if (catEl) {
+      catEl.innerText = catLabel;
+      catEl.style.backgroundColor = 'var(--primary-color)';
+      catEl.style.color = '#fff';
+    }
+    if (descEl) descEl.innerText = desc;
+    if (directionsBtn) {
+      directionsBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${firstPoint.coords[0]},${firstPoint.coords[1]}`;
+    }
+  }
+
+  function clearMapItinerary() {
+    if (!mapInstance) return;
+    if (activePolyline) {
+      mapInstance.removeLayer(activePolyline);
+      activePolyline = null;
+    }
+    // Centrar en Recoleta
+    mapInstance.setView([-34.5880, -58.3910], 14);
+    
+    // Resetear ficha lateral
+    const emptyState = document.getElementById('map-sidebar-empty-state');
+    const contentState = document.getElementById('map-sidebar-content-state');
+    if (emptyState) emptyState.style.display = 'flex';
+    if (contentState) contentState.style.display = 'none';
+  }
+
+  window.selectMapItinerary = selectMapItinerary;
+  window.clearMapItinerary = clearMapItinerary;
+
+  // 17. RENDERIZAR NOTA EDITORIAL PRINCIPAL (Hero / Inicio)
+  function renderFeaturedDayNote() {
+    const container = document.getElementById('featured-day-note-container');
+    if (!container || typeof RECOLETA_ARTICLES === 'undefined' || RECOLETA_ARTICLES.length === 0) return;
+
+    // Primer artículo en articles.js
+    const article = RECOLETA_ARTICLES[0];
+    const preview = article.content && article.content.length > 0
+      ? article.content[0].substring(0, 180) + '...'
+      : '';
+    const words = article.content.join(' ').split(' ').length;
+    const mins = Math.ceil(words / 180);
+
+    container.innerHTML = `
+      <div class="featured-note-grid">
+        <div class="featured-note-img-wrapper">
+          <img src="ccr_cultural_center.jpg" alt="${article.title}" class="featured-note-img">
+        </div>
+        <div class="featured-note-content">
+          <div class="featured-note-meta">
+            <span style="background-color: var(--primary-color); color: var(--accent-color); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.65rem; text-transform: uppercase;">Cultura</span>
+            <span>·</span>
+            <span>Redacción Recoleta</span>
+            <span>·</span>
+            <span>${mins} min de lectura</span>
+          </div>
+          <h3 class="featured-note-title" style="margin-top:0.5rem; margin-bottom: 0.75rem; font-family: var(--font-title);">${article.title}</h3>
+          <p class="featured-note-excerpt" style="font-size:0.92rem; line-height:1.6; color:var(--text-dark); margin-bottom:1.5rem;">${preview}</p>
+          <a href="#/noticias" class="btn btn-primary" onclick="setTimeout(() => { selectLibraryArticle('${encodeURIComponent(article.title)}'); }, 400);">Leer nota completa</a>
+        </div>
+      </div>
+    `;
+    if (typeof feather !== 'undefined') feather.replace();
+  }
+
+  // Helper para buscar y hacer clic en una nota de la biblioteca
+  window.selectLibraryArticle = function(title) {
+    const decoded = decodeURIComponent(title);
+    const items = document.querySelectorAll('.library-article-item');
+    let found = false;
+    items.forEach(el => {
+      if (el.querySelector('div:nth-child(2)').textContent.trim() === decoded.trim()) {
+        el.click();
+        found = true;
+      }
+    });
+    if (!found) {
+      const article = RECOLETA_ARTICLES.find(a => a.title.trim() === decoded.trim());
+      if (article) {
+        const tab = document.querySelector(`.library-cat-tab[data-lib-cat="${article.category}"]`);
+        if (tab) {
+          tab.click();
+          setTimeout(() => {
+            document.querySelectorAll('.library-article-item').forEach(el => {
+              if (el.querySelector('div:nth-child(2)').textContent.trim() === decoded.trim()) {
+                el.click();
+              }
+            });
+          }, 150);
+        }
+      }
+    }
+  };
+
+  // 18. ENRUTADOR CLIENT-SIDE SPA (Rutas Temáticas y SEO)
+  function handleRouting() {
+    let hash = window.location.hash || '#/inicio';
+    
+    // Quitar barra final si la hubiera
+    if (hash.endsWith('/')) {
+      hash = hash.slice(0, -1);
+    }
+    
+    const validRoutes = ['#/inicio', '#/noticias', '#/agenda', '#/turismo', '#/historia', '#/tramites', '#/mapa', '#/participar'];
+    let route = hash;
+    
+    // Soporte para parámetros de correcciones
+    if (hash.startsWith('#/participar?')) {
+      route = '#/participar';
+    }
+    
+    if (!validRoutes.includes(route)) {
+      route = '#/inicio';
+    }
+    
+    const routeName = route.replace('#/', '');
+    
+    // Toglear clase del body para visualización mediante CSS
+    document.body.className = '';
+    document.body.classList.add(`route-${routeName}`);
+    
+    // Actualizar nav links activos
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === route) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+    
+    // Actualizar botón del nav CTA
+    const ctaBtn = document.querySelector('.nav-actions .btn-primary');
+    if (ctaBtn) {
+      if (route === '#/participar') {
+        ctaBtn.classList.add('active');
+      } else {
+        ctaBtn.classList.remove('active');
+      }
+    }
+    
+    // Actualizar SEO Titles
+    const seoTitles = {
+      es: {
+        inicio: "Recoleta | Noticias, Agenda y Comunidad",
+        noticias: "Recoleta | Noticias y Biblioteca de Artículos",
+        agenda: "Recoleta | Agenda Cultural del Barrio",
+        turismo: "Recoleta | Recorridos e Itinerarios Turísticos",
+        historia: "Recoleta | Historia y Patrimonio del Barrio",
+        tramites: "Recoleta | Servicios y Trámites de la Comuna 2",
+        mapa: "Recoleta | Mapa Interactivo de la Comuna 2",
+        participar: "Recoleta | Participación Vecinal y Novedades"
+      },
+      en: {
+        inicio: "Recoleta | News, Events and Community",
+        noticias: "Recoleta | News & Article Library",
+        agenda: "Recoleta | District Cultural Events",
+        turismo: "Recoleta | Guided Walks and Itineraries",
+        historia: "Recoleta | History and Heritage",
+        tramites: "Recoleta | Citizen Services & Procedures",
+        mapa: "Recoleta | Interactive Commune Map",
+        participar: "Recoleta | Get Involved & Submit Stories"
+      },
+      pt: {
+        inicio: "Recoleta | Notícias, Agenda e Comunidade",
+        noticias: "Recoleta | Biblioteca de Artigos",
+        agenda: "Recoleta | Agenda de Eventos Culturais",
+        turismo: "Recoleta | Roteiros e Caminhadas Guiadas",
+        historia: "Recoleta | História e Patrimônio do Bairro",
+        tramites: "Recoleta | Serviços ao Cidadão e Comuna 2",
+        mapa: "Recoleta | Mapa Interativo do Bairro",
+        participar: "Recoleta | Participe e Envie Novedades"
+      }
+    };
+    
+    const titleVal = seoTitles[currentLang] && seoTitles[currentLang][routeName]
+      ? seoTitles[currentLang][routeName]
+      : "Recoleta | Portal Comunitario";
+      
+    document.title = titleVal;
+    
+    // Ir arriba
+    window.scrollTo({ top: 0 });
+    
+    // Trigger especial de Leaflet al activar el mapa
+    if (routeName === 'mapa') {
+      setTimeout(() => {
+        if (mapInstance) {
+          mapInstance.invalidateSize();
+        }
+      }, 300);
+    }
+    
+    // Rellenar correcciones si viene de la biblioteca
+    if (routeName === 'participar' && hash.includes('?report=true')) {
+      const urlParams = new URLSearchParams(window.location.hash.split('?')[1]);
+      const reportTitle = urlParams.get('title');
+      const titleInput = document.getElementById('contrib-title');
+      const textInput = document.getElementById('contrib-text');
+      const catInput = document.getElementById('contrib-category');
+      
+      if (titleInput) titleInput.value = `Corrección: ${reportTitle}`;
+      if (catInput) catInput.value = 'noticias';
+      if (textInput) textInput.value = `Vecino, detecté el siguiente error en la nota "${reportTitle}":\n\n[Detalla aquí la corrección]`;
+    }
+  }
+
+  window.addEventListener('hashchange', handleRouting);
+
+  // 19. FORMULARIO DE PARTICIPACIÓN MEJORADO (WhatsApp + Simulación)
   const contribFormNew = document.getElementById('contrib-form');
   const formSuccess = document.getElementById('form-success');
+  const wsDirectBtn = document.getElementById('whatsapp-direct-btn');
+
   if (contribFormNew && formSuccess) {
-    // Quitar el listener de submit si ya existía — agregamos nuevo
+    // Reemplazar submit listener anterior
     const newForm = contribFormNew.cloneNode(true);
     contribFormNew.parentNode.replaceChild(newForm, contribFormNew);
+
     newForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const submitBtn = document.getElementById('form-submit-btn');
       if (submitBtn) {
-        submitBtn.textContent = '⏳ Enviando...';
+        submitBtn.textContent = '⏳ Enviando propuesta...';
         submitBtn.disabled = true;
       }
-      // Simular envío
+
+      // Simulación de carga (feedback visual premium)
       setTimeout(() => {
         newForm.style.display = 'none';
         formSuccess.classList.add('visible');
+        if (submitBtn) {
+          submitBtn.textContent = 'Enviar Propuesta';
+          submitBtn.disabled = false;
+        }
         if (typeof feather !== 'undefined') feather.replace();
-      }, 800);
+      }, 1200);
     });
   }
 
-  // 17. ESTADOS INICIALES AL CARGAR LA PÁGINA
+  // Redirección directa por WhatsApp
+  if (wsDirectBtn) {
+    wsDirectBtn.addEventListener('click', () => {
+      const nameVal = document.getElementById('contrib-name')?.value || 'Vecino';
+      const titleVal = document.getElementById('contrib-title')?.value || '';
+      const textVal = document.getElementById('contrib-text')?.value || '';
+      const locVal = document.getElementById('contrib-location')?.value || '';
+
+      const msg = `Hola Redacción Recoleta, soy ${nameVal}. Quería enviar una propuesta para el portal:\n\n*Título:* ${titleVal}\n*Lugar:* ${locVal}\n*Detalle:* ${textVal}`;
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    });
+  }
+
+  // 20. ESTADOS INICIALES AL CARGAR LA PÁGINA
   changeLanguage(currentLang);
+  renderFeaturedDayNote();
+  setTimeout(handleRouting, 100);
 });
