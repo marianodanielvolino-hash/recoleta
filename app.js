@@ -1022,9 +1022,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 11. FORMULARIO DE ENVÍO DE CONTENIDO VECINAL (Novedades en vivo)
   const contribForm = document.getElementById('contrib-form');
-
-  if (contribForm && newsContainer) {
-    contribForm.addEventListener('submit', (e) => {
+  if (contribForm) {
+    const newsContainer = document.getElementById('news-container');
+    if (newsContainer) {
+      contribForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
       const name = document.getElementById('contrib-name').value;
@@ -1079,7 +1080,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       alert(translations[currentLang].alert_success_form);
       contribForm.reset();
-    });
+      });
+    }
   }
 
   // 12. BOLETÍN NEWSLETTER
