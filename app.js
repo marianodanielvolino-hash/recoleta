@@ -1483,7 +1483,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hash = hash.slice(0, -1);
     }
     
-    const validRoutes = ['#/inicio', '#/noticias', '#/agenda', '#/turismo', '#/historia', '#/tramites', '#/mapa', '#/participar'];
+    const validRoutes = ['#/inicio', '#/noticias', '#/agenda', '#/turismo', '#/historia', '#/tramites', '#/mapa', '#/comunidades', '#/participar'];
     let route = hash;
     
     // Soporte para parámetros de correcciones
@@ -1531,6 +1531,7 @@ document.addEventListener('DOMContentLoaded', () => {
         historia: "Recoleta | Historia y Patrimonio del Barrio",
         tramites: "Recoleta | Servicios y Trámites de la Comuna 2",
         mapa: "Recoleta | Mapa Interactivo de la Comuna 2",
+        comunidades: "Recoleta | Comunidades Vecinales",
         participar: "Recoleta | Participación Vecinal y Novedades"
       },
       en: {
@@ -1573,6 +1574,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     }
     
+    // Renderizar sección de comunidades al navegar a ella
+    if (routeName === 'comunidades' && typeof CommunityModule !== 'undefined') {
+      setTimeout(() => CommunityModule.renderCommunitySection(), 50);
+    }
+
     // Rellenar correcciones si viene de la biblioteca
     if (routeName === 'participar' && hash.includes('?report=true')) {
       const urlParams = new URLSearchParams(window.location.hash.split('?')[1]);

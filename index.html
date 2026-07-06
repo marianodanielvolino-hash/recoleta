@@ -38,6 +38,7 @@
           <li><a href="#/historia" data-i18n="nav_historia">Historia</a></li>
           <li><a href="#/tramites" data-i18n="nav_tramites">Trámites</a></li>
           <li><a href="#/mapa" data-i18n="nav_mapa">Mapa</a></li>
+          <li><a href="#/comunidades">Comunidades</a></li>
           <li><a href="#/participar" data-i18n="nav_participar">Participar</a></li>
         </ul>
       </nav>
@@ -48,7 +49,16 @@
           <button class="lang-btn" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="pt">PT</button>
         </div>
-        <a href="#/participar" class="btn btn-primary" data-i18n="nav_participar">Participar</a>
+        <!-- Auth: Login button (visible cuando no hay sesión) -->
+        <button class="btn btn-outline btn-login-nav" id="auth-login-btn" style="font-size:0.82rem; padding: 0.4rem 1rem;">Ingresar</button>
+        <!-- Auth: User menu (visible cuando hay sesión) -->
+        <div class="auth-user-menu" id="auth-user-menu" style="display:none;">
+          <button class="auth-avatar-btn" id="auth-profile-btn" title="Mi perfil">
+            <span class="auth-avatar" id="auth-user-avatar">V</span>
+            <span class="auth-user-name-nav" id="auth-user-name">Vecino</span>
+          </button>
+          <button class="btn btn-outline" id="auth-logout-btn" style="font-size:0.75rem; padding:0.35rem 0.75rem;">Salir</button>
+        </div>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
           <span></span>
           <span></span>
@@ -211,6 +221,21 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Comunidades Destacadas en Home -->
+    <section class="section container" style="padding-top: 0 !important;">
+      <div class="section-header" style="margin-bottom: 1.5rem;">
+        <span class="section-subtitle">Vida comunitaria</span>
+        <h2 class="section-title">Comunidades de Recoleta</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Sumate a grupos de vecinos organizados por interés, zona y estilo de vida.</p>
+      </div>
+      <div class="home-communities-grid" id="home-communities-grid">
+        <!-- Renderizado por community.js -->
+      </div>
+      <div style="text-align: center; margin-top: 1.75rem;">
+        <a href="#/comunidades" class="btn btn-outline" style="font-size: 0.9rem;">Ver todas las comunidades →</a>
       </div>
     </section>
 
@@ -968,6 +993,180 @@
   </div>
   <!-- /VISTA: PARTICIPAR -->
 
+  <!-- ============================================================ -->
+  <!-- VISTA: COMUNIDADES                                            -->
+  <!-- ============================================================ -->
+  <div data-route-section="comunidades">
+    <section class="section container" style="padding-top: 2rem !important;">
+      <div class="section-header" style="margin-bottom: 1rem;">
+        <span class="section-subtitle">Red vecinal</span>
+        <h2 class="section-title">Comunidades de Recoleta</h2>
+        <p style="color: var(--text-muted); font-size: 0.93rem; margin-top: 0.5rem; max-width: 600px;">
+          Grupos de vecinos organizados por interés, barrio y estilo de vida. Unite a los que te interesan o simplemente explorá.
+        </p>
+      </div>
+
+      <!-- Demo mode notice -->
+      <div class="demo-notice">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Versión inicial de comunidad. El acceso definitivo requerirá validación de cuenta por email.</span>
+      </div>
+
+      <!-- Filtros por categoría -->
+      <div class="community-filters" id="community-filters">
+        <!-- Renderizado por community.js -->
+      </div>
+
+      <!-- Grid de comunidades -->
+      <div class="community-grid" id="community-grid">
+        <!-- Renderizado por community.js -->
+      </div>
+    </section>
+  </div>
+  <!-- /VISTA: COMUNIDADES -->
+
+  <!-- ============================================================ -->
+  <!-- MODALES                                                       -->
+  <!-- ============================================================ -->
+
+  <!-- Modal: Login / Registro -->
+  <div class="modal-overlay" id="modal-auth" role="dialog" aria-modal="true" aria-label="Ingresar al portal">
+    <div class="modal-box modal-box--sm">
+      <button class="modal-close" data-close-modal="modal-auth" aria-label="Cerrar">✕</button>
+      <div class="modal-header">
+        <span style="font-size: 2rem;">🏛️</span>
+        <h3 class="modal-title">Ingresar a Recoleta</h3>
+        <p class="modal-subtitle">Ingresá tu nombre y email para participar en las comunidades del barrio.</p>
+      </div>
+      <form id="auth-form" novalidate>
+        <div class="form-group">
+          <label for="auth-name">Tu nombre</label>
+          <input type="text" id="auth-name" class="form-control" placeholder="Ej. María García" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="auth-email">Email <span style="color: var(--primary-color);">*</span></label>
+          <input type="email" id="auth-email" class="form-control" placeholder="tu@email.com" required autocomplete="email">
+        </div>
+        <p class="auth-error"></p>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Ingresar al portal</button>
+      </form>
+      <p class="modal-legal">Al ingresar aceptás participar con buenas intenciones. Los datos se guardan sólo en tu navegador en esta versión inicial.</p>
+    </div>
+  </div>
+
+  <!-- Modal: Perfil de usuario -->
+  <div class="modal-overlay" id="modal-profile" role="dialog" aria-modal="true" aria-label="Mi perfil">
+    <div class="modal-box">
+      <button class="modal-close" data-close-modal="modal-profile" aria-label="Cerrar">✕</button>
+      <div class="modal-header">
+        <div class="profile-avatar-big" id="profile-avatar-big">V</div>
+        <h3 class="modal-title">Mi perfil</h3>
+      </div>
+      <form id="profile-form" novalidate>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="profile-name">Nombre completo</label>
+            <input type="text" id="profile-name" class="form-control" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label for="profile-email">Email</label>
+            <input type="email" id="profile-email" class="form-control" disabled style="opacity: 0.6;">
+          </div>
+          <div class="form-group">
+            <label for="profile-zone">Zona del barrio</label>
+            <select id="profile-zone" class="form-control">
+              <option>Zona Plaza Francia</option>
+              <option>Zona Pueyrredón / Las Heras</option>
+              <option>Zona Callao / Santa Fe</option>
+              <option>Zona Libertador / Palermo</option>
+              <option>Zona Tribunales / Barrio Norte</option>
+              <option>Otra zona</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="profile-usertype">Soy</label>
+            <select id="profile-usertype" class="form-control">
+              <option>Vecino/a</option>
+              <option>Comerciante</option>
+              <option>Estudiante</option>
+              <option>Visitante</option>
+              <option>Profesional</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 0.5rem;">
+          <label>Comunidades en las que participás</label>
+          <div id="profile-communities-list" class="profile-communities-list"></div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Guardar cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Detalle de Comunidad -->
+  <div class="modal-overlay" id="modal-community" role="dialog" aria-modal="true" aria-label="Detalle de comunidad">
+    <div class="modal-box modal-box--lg">
+      <button class="modal-close" data-close-modal="modal-community" aria-label="Cerrar">✕</button>
+      <div class="cd-header">
+        <div class="cd-icon" id="cd-icon">🏘️</div>
+        <div class="cd-header-info">
+          <div id="cd-category"></div>
+          <h3 class="cd-name" id="cd-name">Comunidad</h3>
+          <p class="cd-members" id="cd-members"></p>
+        </div>
+      </div>
+      <p class="cd-desc" id="cd-desc"></p>
+      <div class="cd-actions">
+        <button class="btn btn-primary" id="community-detail-join-btn" data-community-id="">Unirme a esta comunidad</button>
+        <button class="btn btn-outline" id="community-detail-post-btn" style="display:none;">+ Publicar en esta comunidad</button>
+      </div>
+      <div class="cd-tabs">
+        <button class="cd-tab active" data-tab="posts" onclick="communityTabSwitch(this,'posts')">Publicaciones</button>
+        <button class="cd-tab" data-tab="events" onclick="communityTabSwitch(this,'events')">Eventos</button>
+        <button class="cd-tab" data-tab="rules" onclick="communityTabSwitch(this,'rules')">Reglas</button>
+      </div>
+      <div class="cd-tab-content" id="cd-tab-posts">
+        <div id="cd-posts"></div>
+      </div>
+      <div class="cd-tab-content" id="cd-tab-events" style="display:none;">
+        <div id="cd-events"></div>
+      </div>
+      <div class="cd-tab-content" id="cd-tab-rules" style="display:none;">
+        <div id="cd-rules"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Nueva publicación -->
+  <div class="modal-overlay" id="modal-post" role="dialog" aria-modal="true" aria-label="Nueva publicación">
+    <div class="modal-box modal-box--sm">
+      <button class="modal-close" data-close-modal="modal-post" aria-label="Cerrar">✕</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Nueva publicación</h3>
+        <p class="modal-subtitle">Publicando en: <strong id="post-modal-community-name"></strong></p>
+      </div>
+      <form id="post-form" novalidate>
+        <div class="form-group">
+          <label for="post-type">Tipo de publicación</label>
+          <select id="post-type" class="form-control">
+            <option>Aviso</option>
+            <option>Evento</option>
+            <option>Consulta</option>
+            <option>Recomendación</option>
+            <option>Pedido de ayuda</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="post-text">Texto <span style="color: var(--primary-color);">*</span></label>
+          <textarea id="post-text" class="form-control" placeholder="Escribí tu mensaje para la comunidad..." style="height: 110px;" required></textarea>
+        </div>
+        <p class="post-error" style="color: #e55; font-size: 0.82rem; margin: 0;"></p>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.75rem;">Publicar</button>
+      </form>
+      <p class="modal-legal">Las publicaciones quedan guardadas localmente en tu navegador en esta versión inicial del portal.</p>
+    </div>
+  </div>
+
   <!-- Publicidad: Comercios que acompañan al barrio -->
   <div class="ad-leaderboard" style="margin-top: 3.5rem; margin-bottom: 0;">
     <div class="ad-wrapper" id="top-ad">
@@ -1003,6 +1202,7 @@
           <li><a href="#/turismo" data-i18n="nav_turismo">Turismo</a></li>
           <li><a href="#/historia" data-i18n="nav_historia">Historia</a></li>
           <li><a href="#/mapa" data-i18n="nav_mapa">Mapa</a></li>
+          <li><a href="#/comunidades">Comunidades</a></li>
           <li><a href="#/participar" data-i18n="nav_participar">Participar</a></li>
         </ul>
       </div>
@@ -1036,6 +1236,19 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
   <script src="articles.js"></script>
+  <script src="communities.js"></script>
+  <script src="auth.js"></script>
   <script src="app.js"></script>
+  <script src="community.js"></script>
+  <script>
+    // Tab switcher para modal de detalle de comunidad
+    function communityTabSwitch(btn, tab) {
+      document.querySelectorAll('.cd-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.cd-tab-content').forEach(c => c.style.display = 'none');
+      btn.classList.add('active');
+      const el = document.getElementById('cd-tab-' + tab);
+      if (el) el.style.display = '';
+    }
+  </script>
 </body>
 </html>
