@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portal oficial de noticias, historia y cultura del barrio de Recoleta, Buenos Aires. Infórmate sobre novedades, participa enviando tu contenido y descubre su historia.">
-  <title>Recoleta | Noticias, Historia y Comunidad</title>
+  <meta name="description" content="Portal hiperlocal de Recoleta: noticias, agenda cultural, historia, turismo, trámites, mapa barrial y participación vecinal de la Comuna 2.">
+  <title>Recoleta | Noticias, historia, cultura y turismo de la Comuna 2</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
-  <meta property="og:title" content="Recoleta | Portal de Noticias, Historia y Comunidad">
-  <meta property="og:description" content="Portal comunitario del barrio de Recoleta, Buenos Aires. Noticias, historia, agenda cultural y mapa interactivo de 100 puntos estratégicos.">
+  <meta property="og:title" content="Recoleta | Noticias, historia, cultura y turismo de la Comuna 2">
+  <meta property="og:description" content="Portal hiperlocal de Recoleta: noticias, agenda cultural, historia, turismo, trámites, mapa barrial y participación vecinal de la Comuna 2.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="hero_recoleta.jpg">
+  <meta property="og:locale" content="es_AR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Recoleta | Noticias, historia, cultura y turismo de la Comuna 2">
+  <meta name="twitter:description" content="Portal hiperlocal de Recoleta: noticias, agenda cultural, historia, turismo, trámites, mapa barrial y participación vecinal de la Comuna 2.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Mulish:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <!-- Leaflet.js para Mapa Interactivo Comuna 2 -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
 
-
-
   <!-- Cabecera / Navegación -->
   <header class="main-header">
     <div class="container header-container">
-      <a href="#" class="logo">
+      <a href="#/inicio" class="logo">
         Recoleta<span>.</span>
       </a>
-      
+
       <nav class="main-nav" id="main-nav">
         <ul class="nav-links">
           <li><a href="#/inicio" class="active" data-i18n="nav_inicio">Inicio</a></li>
@@ -43,13 +43,11 @@
       </nav>
 
       <div class="nav-actions">
-        <!-- Selector de Idioma -->
         <div class="lang-selector">
           <button class="lang-btn active" data-lang="es">ES</button>
           <button class="lang-btn" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="pt">PT</button>
         </div>
-
         <a href="#/participar" class="btn btn-primary" data-i18n="nav_participar">Participar</a>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
           <span></span>
@@ -60,15 +58,19 @@
     </div>
   </header>
 
-  <!-- VISTA: INICIO -->
+  <!-- ============================================================ -->
+  <!-- VISTA: INICIO                                                 -->
+  <!-- ============================================================ -->
   <div data-route-section="inicio">
+
     <!-- Hero Section Editorial -->
     <section class="hero" style="padding: 4rem 0 3.5rem 0 !important; background: linear-gradient(rgba(28, 25, 23, 0.4), rgba(28, 25, 23, 0.75)), url('hero_recoleta.jpg') no-repeat center center/cover;">
       <div class="container">
         <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
           <span class="hero-tag" data-i18n="hero_tag" style="background-color: var(--primary-color); color: var(--accent-color); font-weight: 800; padding: 0.35rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase;">Portal Vecinal</span>
           <h1 class="hero-title" data-i18n="hero_title" style="color: #fff; font-size: 3rem; font-weight: 700; font-family: var(--font-title); margin-top: 1.25rem; margin-bottom: 1.25rem; line-height: 1.15;">Recoleta: noticias, agenda, historia y vida barrial</h1>
-          <p class="hero-desc" data-i18n="hero_desc" style="color: #f5f5f4; font-size: 1.15rem; line-height: 1.6; margin-bottom: 2rem;">Un portal para vecinos, visitantes y comercios de la Comuna 2: actualidad, patrimonio, cultura, trámites y recorridos del barrio.</p>
+          <p class="hero-desc" data-i18n="hero_desc" style="color: #f5f5f4; font-size: 1.15rem; line-height: 1.6; margin-bottom: 0.5rem;">Noticias, historia, cultura, turismo y comunidad de la Comuna 2.</p>
+          <p style="color: rgba(245,245,244,0.75); font-size: 0.95rem; margin-bottom: 2rem;">Barrio de Recoleta · Ciudad Autónoma de Buenos Aires</p>
           <div class="hero-buttons" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
             <a href="#/noticias" class="btn btn-primary" data-i18n="hero_btn_news">Ver Noticias</a>
             <a href="#/mapa" class="btn btn-outline" style="border-color: #fff; color: #fff;" data-i18n="hero_btn_map">Explorar Mapa</a>
@@ -80,7 +82,7 @@
     <!-- Dashboard: Hoy en Recoleta -->
     <div class="container" style="margin-top: -30px; margin-bottom: 3.5rem; position: relative; z-index: 10;">
       <div class="services-dashboard">
-        <!-- Columna 1: Clima con Fuente -->
+        <!-- Columna 1: Clima -->
         <div class="dashboard-col" id="dashboard-weather">
           <div class="dashboard-title">
             <i data-feather="sun"></i>
@@ -92,11 +94,11 @@
             </div>
             <div>
               <div class="weather-compact-temp" id="weather-temp-compact">16°C</div>
-              <div class="weather-compact-details" id="weather-status-compact">Cargando...</div>
+              <div class="weather-compact-details" id="weather-status-compact">Parcialmente Nublado</div>
             </div>
           </div>
           <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem;">
-            Fuente: Open-Meteo API. Act. hace <1h.
+            Fuente: Open-Meteo API. Act. hace &lt;1h.
           </div>
         </div>
 
@@ -118,7 +120,7 @@
           </ul>
         </div>
 
-        <!-- Columna 3: Recomendado o Efeméride -->
+        <!-- Columna 3: Hoy Recomendamos -->
         <div class="dashboard-col" id="dashboard-links">
           <div class="dashboard-title">
             <i data-feather="bookmark"></i>
@@ -135,7 +137,7 @@
       </div>
     </div>
 
-    <!-- Seccion Perfiles de Públicos -->
+    <!-- Accesos Rápidos por Público -->
     <section class="section container" style="padding-top: 0 !important;">
       <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
         <span class="section-subtitle">¿Cómo querés vivir el barrio?</span>
@@ -148,9 +150,9 @@
           <div>
             <div class="profile-icon"><i data-feather="home"></i></div>
             <h3 class="profile-title">Soy vecino</h3>
-            <p class="profile-desc">Encontrá guías para trámites de la Comuna 2, ubicaciones de salud, puntos verdes de reciclaje y denuncias vecinales.</p>
+            <p class="profile-desc">Trámites, reclamos, salud, servicios comunales y novedades de la Comuna 2.</p>
           </div>
-          <a href="#/tramites" class="btn btn-outline" style="width:100%;">Trámites y Servicios</a>
+          <a href="#/tramites" class="btn btn-outline" style="width:100%;">Ver información útil</a>
         </div>
 
         <!-- Perfil 2: Visitante -->
@@ -158,24 +160,24 @@
           <div>
             <div class="profile-icon"><i data-feather="compass"></i></div>
             <h3 class="profile-title">Estoy visitando Recoleta</h3>
-            <p class="profile-desc">Explorá los recorridos autoguiados recomendados por Plaza Francia, museos históricos, palacios franceses y mapas turísticos.</p>
+            <p class="profile-desc">Recorridos, museos, cementerio, cafés, arquitectura y experiencias para descubrir el barrio.</p>
           </div>
-          <a href="#/turismo" class="btn btn-outline" style="width:100%;">Guías Turísticas</a>
+          <a href="#/turismo" class="btn btn-outline" style="width:100%;">Explorar recorridos</a>
         </div>
 
         <!-- Perfil 3: Comercio -->
         <div class="profile-card">
           <div>
             <div class="profile-icon"><i data-feather="shopping-bag"></i></div>
-            <h3 class="profile-title">Tengo un comercio / institución</h3>
-            <p class="profile-desc">Publicá tu agenda de eventos, postulá tu local en el mapa interactivo de la comuna o sumate como colaborador del portal.</p>
+            <h3 class="profile-title">Tengo un comercio o institución</h3>
+            <p class="profile-desc">Publicá una novedad, sumá tu actividad al mapa o acompañá el portal como sponsor.</p>
           </div>
-          <a href="#/participar" class="btn btn-outline" style="width:100%;">Registrar Novedad</a>
+          <a href="#/participar" class="btn btn-outline" style="width:100%;">Participar</a>
         </div>
       </div>
     </section>
 
-    <!-- Sección Nota del Día Editorial (Protagonista) -->
+    <!-- Nota Editorial del Día -->
     <section class="section container" style="padding-top: 0 !important;">
       <div class="section-header">
         <span class="section-subtitle">Protagonista de la jornada</span>
@@ -183,11 +185,42 @@
       </div>
 
       <div class="featured-note-section" id="featured-day-note-container">
-        <!-- Renderizado dinámico en JS -->
-        <div style="padding: 3rem; text-align: center; color: var(--text-muted);">Cargando editorial...</div>
-       <!-- VISTA: NOTICIAS & BIBLIOTECA -->
+        <!-- Contenido estático de respaldo — reemplazado dinámicamente por JS al cargar articles.js -->
+        <!-- [DATO FIJO — reemplazar con dato dinámico cuando se conecte CMS] -->
+        <div class="featured-note-grid">
+          <div class="featured-note-img-wrapper">
+            <img src="ccr_cultural_center.jpg" alt="Vacaciones de invierno en Recoleta" class="featured-note-img">
+          </div>
+          <div class="featured-note-content">
+            <div class="featured-note-meta">
+              <span style="background-color: var(--primary-color); color: var(--accent-color); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700;">Agenda Cultural</span>
+              <span style="color: var(--text-muted);">·</span>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Redacción Recoleta</span>
+              <span style="color: var(--text-muted);">·</span>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">5 min de lectura</span>
+              <span style="color: var(--text-muted);">·</span>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Actualizado hoy</span>
+            </div>
+            <h3 class="featured-note-title" style="margin-top:0.75rem; margin-bottom: 0.75rem; font-family: var(--font-title); font-size: 1.6rem; line-height: 1.3; color: var(--accent-color);">Vacaciones de invierno en Recoleta: museos, libros y planes para caminar el barrio</h3>
+            <p class="featured-note-excerpt" style="font-size:0.95rem; line-height:1.7; color:var(--text-dark); margin-bottom:1.5rem;">Agenda cultural, propuestas familiares y recorridos recomendados entre Plaza Francia, Junín y Avenida Del Libertador. Una guía para vecinos y visitantes que quieren aprovechar el invierno en uno de los barrios más ricos de Buenos Aires.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+              <a href="#/noticias" class="btn btn-primary">Leer nota completa</a>
+              <a href="#/noticias" style="font-size: 0.8rem; color: var(--primary-color); font-weight: 600; display: flex; align-items: center; gap: 0.25rem;">
+                <i data-feather="share-2" style="width:14px; height:14px;"></i> Compartir
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /VISTA: INICIO -->
+
+  <!-- ============================================================ -->
+  <!-- VISTA: NOTICIAS & BIBLIOTECA                                  -->
+  <!-- ============================================================ -->
   <div data-route-section="noticias">
-    <!-- Sección Principal: Noticias y Entrevistas + Sidebar con Anuncios -->
     <section class="section container" id="noticias-entrevistas" style="padding-top: 2rem !important;">
       <div class="section-header">
         <span class="section-subtitle" data-i18n="section_news_sub">Actualidad y Testimonios</span>
@@ -195,7 +228,7 @@
       </div>
 
       <div class="main-grid">
-        <!-- Grid de Noticias y Entrevistas -->
+        <!-- Grid de Noticias -->
         <main>
           <div class="news-filters">
             <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todo</button>
@@ -209,10 +242,11 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-          <!-- Widget RSS Multicontenido -->
+          <!-- Canales de Novedades -->
           <div class="sidebar-widget">
             <h3 class="widget-title" style="display: flex; align-items: center; gap: 0.5rem;">
-              <i data-feather="rss" style="color: var(--accent-hover); width: 18px; height: 18px;"></i> <span data-i18n="rss_multi_title">Canales de Novedades</span>
+              <i data-feather="rss" style="color: var(--accent-hover); width: 18px; height: 18px;"></i>
+              <span data-i18n="rss_multi_title">Canales de Novedades</span>
             </h3>
             <div class="rss-tabs" style="display: flex; gap: 0.25rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; flex-wrap: wrap;">
               <button class="rss-tab-btn active" data-feed="all" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background-color: var(--primary-color); color: #fff; font-weight: 700; cursor: pointer; transition: var(--transition-smooth);">Recoleta</button>
@@ -221,13 +255,26 @@
               <button class="rss-tab-btn" data-feed="comuna" style="flex: 1; min-width: 60px; font-size: 0.7rem; padding: 0.35rem 0.5rem; border: none; border-radius: 4px; background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: var(--transition-smooth);">Servicios</button>
             </div>
             <div class="rss-list" id="rss-container">
-              <div style="text-align: center; padding: 1.5rem 0; color: var(--text-muted);">
-                <p data-i18n="connecting_rss">Conectando...</p>
+              <!-- [DATO FIJO — reemplazar con RSS dinámico cuando se configure] -->
+              <div class="rss-item">
+                <div class="rss-meta"><span class="rss-source" style="color:var(--primary-color);">RECOLETA</span><span>Portal Recoleta</span></div>
+                <h4 class="rss-title">Agenda cultural de la semana en Recoleta</h4>
+                <p class="rss-desc">Museos, ferias, exposiciones y actividades para disfrutar el barrio esta semana...</p>
+              </div>
+              <div class="rss-item">
+                <div class="rss-meta"><span class="rss-source" style="color:var(--primary-color);">RECOLETA</span><span>Portal Recoleta</span></div>
+                <h4 class="rss-title">Novedades de la Comuna 2</h4>
+                <p class="rss-desc">Trámites, servicios, obras y novedades comunales para los vecinos de Recoleta...</p>
+              </div>
+              <div class="rss-item">
+                <div class="rss-meta"><span class="rss-source" style="color:var(--primary-color);">RECOLETA</span><span>Portal Recoleta</span></div>
+                <h4 class="rss-title">Historias y fotos de vecinos</h4>
+                <p class="rss-desc">Memorias, anécdotas y imágenes del barrio compartidas por la comunidad...</p>
               </div>
             </div>
           </div>
 
-          <!-- Publicidad Sidebar 1: Real Recoleta Business (Palacio Duhau) -->
+          <!-- Patrocinador Sidebar 1 -->
           <div class="ad-sidebar">
             <span class="ad-sidebar-tag" data-i18n="ad_partner">Patrocinado</span>
             <h3 class="ad-sidebar-title">Palacio Duhau</h3>
@@ -235,7 +282,7 @@
             <a href="#" class="btn btn-outline" style="width: 100%; border-color: var(--primary-color);" data-i18n="ad_btn_visit">Reservar Ahora</a>
           </div>
 
-          <!-- Publicidad Sidebar 2: Real Recoleta Business (El Sanjuanino) -->
+          <!-- Patrocinador Sidebar 2 -->
           <div class="ad-sidebar" style="background: linear-gradient(180deg, #182235 0%, #0d131f 100%);">
             <span class="ad-sidebar-tag" data-i18n="ad_partner">Patrocinado</span>
             <h3 class="ad-sidebar-title">El Sanjuanino</h3>
@@ -246,7 +293,7 @@
       </div>
     </section>
 
-    <!-- Sección Biblioteca de Artículos y Notas Históricas -->
+    <!-- Biblioteca de Notas -->
     <section class="section" id="biblioteca-notas" style="background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
       <div class="container">
         <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
@@ -263,27 +310,26 @@
             <div class="library-cat-tabs" id="library-cat-tabs">
               <button class="library-cat-tab active" data-lib-cat="all">
                 <span data-i18n="library_cat_all">Todas las notas</span>
-                <span class="library-cat-badge" id="badge-all">61</span>
+                <span class="library-cat-badge" id="badge-all">—</span>
               </button>
               <button class="library-cat-tab" data-lib-cat="comuna">
                 <span data-i18n="library_cat_comuna">Trámites y Comuna 2</span>
-                <span class="library-cat-badge" id="badge-comuna">0</span>
+                <span class="library-cat-badge" id="badge-comuna">—</span>
               </button>
               <button class="library-cat-tab" data-lib-cat="cultura">
                 <span data-i18n="library_cat_cultura">Agenda Cultural y Eventos</span>
-                <span class="library-cat-badge" id="badge-cultura">0</span>
+                <span class="library-cat-badge" id="badge-cultura">—</span>
               </button>
               <button class="library-cat-tab" data-lib-cat="historia">
                 <span data-i18n="library_cat_historia">Patrimonio e Historia</span>
-                <span class="library-cat-badge" id="badge-historia">0</span>
+                <span class="library-cat-badge" id="badge-historia">—</span>
               </button>
               <button class="library-cat-tab" data-lib-cat="guias">
                 <span data-i18n="library_cat_guias">Guías de Paseos y Turismo</span>
-                <span class="library-cat-badge" id="badge-guias">0</span>
+                <span class="library-cat-badge" id="badge-guias">—</span>
               </button>
             </div>
             <div class="library-article-list" id="library-article-list">
-              <!-- Cargado dinámicamente por JS -->
             </div>
           </div>
 
@@ -291,8 +337,7 @@
           <div class="library-right-panel" id="library-right-panel">
             <div class="library-article-header">
               <h3 id="library-article-title" style="margin-bottom: 0.5rem;">Seleccioná un artículo para leer</h3>
-              
-              <!-- Barra de metadatos periodísticos -->
+
               <div class="library-metadata-bar" id="library-article-meta" style="display: none;">
                 <div class="library-meta-item">
                   <i data-feather="user"></i>
@@ -329,7 +374,6 @@
                 <p>Elegí una nota de la lista para comenzar a leer.</p>
               </div>
             </div>
-            <!-- Botón de reporte de correcciones -->
             <div class="library-article-footer-links" id="library-article-footer" style="display: none;">
               <a href="#/participar" class="library-correction-link" id="lib-btn-correction">
                 <i data-feather="alert-circle"></i>
@@ -341,7 +385,11 @@
       </div>
     </section>
   </div>
-  <!-- VISTA: AGENDA -->
+  <!-- /VISTA: NOTICIAS -->
+
+  <!-- ============================================================ -->
+  <!-- VISTA: AGENDA                                                 -->
+  <!-- ============================================================ -->
   <div data-route-section="agenda">
     <section class="section" id="seccion-agenda" style="background-color: var(--bg-card); border-bottom: 1px solid var(--border-color);">
       <div class="container">
@@ -351,52 +399,37 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-          <!-- Evento 1 -->
           <div class="profile-card" style="min-height: auto; border-top: 4px solid var(--primary-color);">
             <div>
               <div class="library-meta-item" style="font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-size: 0.75rem;">
                 <i data-feather="calendar" style="width:14px;height:14px;vertical-align:middle;margin-right:2px;"></i> Sábados y Domingos (11:00 - 20:00)
               </div>
               <h3 class="profile-title" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Feria de Artesanías en Plaza Francia</h3>
-              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">
-                Más de 300 artesanos calificados exhiben piezas únicas en cuero, metal, madera y platería. Un paseo icónico frente al cementerio con espectáculos a la gorra.
-              </p>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">Más de 300 artesanos calificados exhiben piezas únicas en cuero, metal, madera y platería. Un paseo icónico frente al cementerio con espectáculos a la gorra.</p>
             </div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">
-              <strong>Ubicación:</strong> Av. Pueyrredón y Del Libertador
-            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);"><strong>Ubicación:</strong> Av. Pueyrredón y Del Libertador</div>
           </div>
 
-          <!-- Evento 2 -->
           <div class="profile-card" style="min-height: auto; border-top: 4px solid var(--primary-color);">
             <div>
               <div class="library-meta-item" style="font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-size: 0.75rem;">
                 <i data-feather="calendar" style="width:14px;height:14px;vertical-align:middle;margin-right:2px;"></i> Martes a Domingos (11:00 - 20:00)
               </div>
               <h3 class="profile-title" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Exposiciones del Centro Cultural Recoleta</h3>
-              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">
-                Muestras de arte visual contemporáneo en salas históricas, recitales acústicos en los patios centrales y programación especial de teatro y danza para el invierno.
-              </p>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">Muestras de arte visual contemporáneo en salas históricas, recitales acústicos en los patios centrales y programación especial de teatro y danza para el invierno.</p>
             </div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">
-              <strong>Ubicación:</strong> Junín 1930
-            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);"><strong>Ubicación:</strong> Junín 1930</div>
           </div>
 
-          <!-- Evento 3 -->
           <div class="profile-card" style="min-height: auto; border-top: 4px solid var(--primary-color);">
             <div>
               <div class="library-meta-item" style="font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-size: 0.75rem;">
                 <i data-feather="calendar" style="width:14px;height:14px;vertical-align:middle;margin-right:2px;"></i> Todo el mes (11:00 - 19:00)
               </div>
               <h3 class="profile-title" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Colecciones en el Museo de Bellas Artes</h3>
-              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">
-                Recorrido libre por el patrimonio pictórico más importante del continente, con obras maestras de pintores locales e internacionales en exhibición libre.
-              </p>
+              <p class="profile-desc" style="font-size: 0.82rem; margin-bottom: 0.5rem; color: var(--text-dark);">Recorrido libre por el patrimonio pictórico más importante del continente, con obras maestras de pintores locales e internacionales en exhibición libre.</p>
             </div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">
-              <strong>Ubicación:</strong> Av. del Libertador 1473
-            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);"><strong>Ubicación:</strong> Av. del Libertador 1473</div>
           </div>
         </div>
 
@@ -406,61 +439,133 @@
       </div>
     </section>
   </div>
+  <!-- /VISTA: AGENDA -->
 
-  <!-- VISTA: TURISMO -->
+  <!-- ============================================================ -->
+  <!-- VISTA: TURISMO                                                -->
+  <!-- ============================================================ -->
   <div data-route-section="turismo">
     <section class="section" id="seccion-turismo" style="background-color: var(--bg-light); border-bottom: 1px solid var(--border-color);">
       <div class="container">
         <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
           <span class="section-subtitle">Recorridos Recomendados</span>
-          <h2 class="section-title">Recoleta para Visitar: Itinerarios</h2>
+          <h2 class="section-title">Turismo en Recoleta: Itinerarios</h2>
+          <p style="max-width: 600px; margin: 0.75rem auto 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">El barrio más distinguido de Buenos Aires tiene algo para cada viajero. Elegí tu recorrido.</p>
         </div>
 
-        <div class="itineraries-grid">
-          <!-- Itinerario 1: 2 Horas -->
+        <div class="tourism-grid">
+          <!-- Card 1: Recoleta en un día -->
           <div class="itinerary-card">
-            <img src="plaza_francia_fair.jpg" alt="Itinerario 2 Horas" class="itinerary-img">
+            <img src="plaza_francia_fair.jpg" alt="Recoleta en un día" class="itinerary-img">
             <div class="itinerary-info">
               <div>
-                <span class="itinerary-meta">Itinerario: 2 Horas (Básico)</span>
-                <h3 class="itinerary-title">El Corazón Histórico</h3>
-                <p class="itinerary-desc">Especial para visitas cortas. Ingresá al Cementerio de la Recoleta para ver las bóvedas monumentales, visitá la Basílica del Pilar y finalizá con un café histórico en La Biela.</p>
+                <span class="itinerary-meta">⏱ 8 horas · Todo público</span>
+                <h3 class="itinerary-title">Recoleta en un día</h3>
+                <p class="itinerary-desc">Cementerio histórico, Basílica del Pilar, café en La Biela, feria de artesanos, Bellas Artes y atardecer en Plaza Francia. El circuito completo.</p>
               </div>
               <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('historico'); }, 500);">Ver Ruta en Mapa</a>
             </div>
           </div>
 
-          <!-- Itinerario 2: Medio Día -->
+          <!-- Card 2: Cementerio de la Recoleta -->
           <div class="itinerary-card">
-            <img src="ccr_cultural_center.jpg" alt="Itinerario Medio Dia" class="itinerary-img">
+            <img src="ccr_cultural_center.jpg" alt="Cementerio de la Recoleta" class="itinerary-img">
             <div class="itinerary-info">
               <div>
-                <span class="itinerary-meta">Itinerario: Medio Día</span>
-                <h3 class="itinerary-title">Arte y Naturaleza</h3>
-                <p class="itinerary-desc">Paseá bajo las sombras gigantes del Gomero Histórico de Plaza Francia, visitá las muestras en el Centro Cultural Recoleta y cruzá a contemplar el Museo de Bellas Artes.</p>
+                <span class="itinerary-meta">⏱ 2 horas · Historia</span>
+                <h3 class="itinerary-title">Cementerio de la Recoleta</h3>
+                <p class="itinerary-desc">El museo a cielo abierto más visitado del país. Bóvedas monumentales, esculturas de mármol, panteones de familias históricas y la tumba de Evita.</p>
               </div>
-              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('cultural'); }, 500);">Ver Ruta en Mapa</a>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('historico'); }, 500);">Ver en Mapa</a>
             </div>
           </div>
 
-          <!-- Itinerario 3: Con Chicos -->
+          <!-- Card 3: Plaza Francia y Feria -->
           <div class="itinerary-card">
-            <img src="children_book_fair.jpg" alt="Itinerario Con Chicos" class="itinerary-img">
+            <img src="plaza_francia_fair.jpg" alt="Plaza Francia y Feria de Artesanos" class="itinerary-img">
             <div class="itinerary-info">
               <div>
-                <span class="itinerary-meta">Itinerario: Familiar</span>
-                <h3 class="itinerary-title">Recoleta con Chicos</h3>
-                <p class="itinerary-desc">Ideal para familias. Paseo al aire libre por los jardines de Plaza Alvear, diversión en la Feria del Libro Infantil (cuando está activa) y helados en Persicco.</p>
+                <span class="itinerary-meta">⏱ 3 horas · Fin de semana</span>
+                <h3 class="itinerary-title">Plaza Francia y Feria</h3>
+                <p class="itinerary-desc">Los sábados y domingos la plaza se llena de artesanos, músicos y familias. El gomero histórico, la Floralis Genérica y los palacios del entorno completan el paseo.</p>
               </div>
-              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('chicos'); }, 500);">Ver Ruta en Mapa</a>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('cultural'); }, 500);">Ver en Mapa</a>
+            </div>
+          </div>
+
+          <!-- Card 4: Museos y cultura -->
+          <div class="itinerary-card">
+            <img src="borges_exhibition.jpg" alt="Museos y cultura en Recoleta" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">⏱ Medio día · Arte</span>
+                <h3 class="itinerary-title">Museos y Cultura</h3>
+                <p class="itinerary-desc">Bellas Artes, Centro Cultural Recoleta, Palais de Glace, Biblioteca Nacional y el Museo de Arte Decorativo. Uno de los polos culturales más densos de América Latina.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('cultural'); }, 500);">Ver en Mapa</a>
+            </div>
+          </div>
+
+          <!-- Card 5: Recoleta con chicos -->
+          <div class="itinerary-card">
+            <img src="children_book_fair.jpg" alt="Recoleta con chicos" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">⏱ Medio día · Familiar</span>
+                <h3 class="itinerary-title">Recoleta con Chicos</h3>
+                <p class="itinerary-desc">Jardines de Plaza Alvear, Floralis Genérica, actividades del Centro Cultural, Feria del Libro Infantil (en temporada) y helados artesanales en Persicco.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('chicos'); }, 500);">Ver en Mapa</a>
+            </div>
+          </div>
+
+          <!-- Card 6: Recoleta gratis -->
+          <div class="itinerary-card">
+            <img src="slide_gomero.jpg" alt="Recoleta gratis" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">⏱ Todo el día · Sin costo</span>
+                <h3 class="itinerary-title">Recoleta Gratis</h3>
+                <p class="itinerary-desc">Bellas Artes (entrada libre), Centro Cultural Recoleta, cementerio, plazas, gomeros históricos, feria y arquitectura de palacios. Todo sin gastar un peso.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="setTimeout(() => { selectMapItinerary('gratis'); }, 500);">Ver en Mapa</a>
+            </div>
+          </div>
+
+          <!-- Card 7: Recoleta premium -->
+          <div class="itinerary-card">
+            <img src="slide_paris.jpg" alt="Recoleta premium" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">⏱ Tarde · Gastronomía</span>
+                <h3 class="itinerary-title">Recoleta Premium</h3>
+                <p class="itinerary-desc">Té de la tarde en el Alvear Palace, coctelería en el Duhau, cena en Fervor Parrilla y paseo nocturno por Av. Alvear entre palacios iluminados.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Ver en Mapa</a>
+            </div>
+          </div>
+
+          <!-- Card 8: Recoleta para sacar fotos -->
+          <div class="itinerary-card">
+            <img src="slide_derecho.jpg" alt="Recoleta para sacar fotos" class="itinerary-img">
+            <div class="itinerary-info">
+              <div>
+                <span class="itinerary-meta">⏱ 3 horas · Fotografía</span>
+                <h3 class="itinerary-title">Recoleta para Sacar Fotos</h3>
+                <p class="itinerary-desc">Fachadas de palacios en Av. Alvear, gomeros monumentales, bóvedas del cementerio, Floralis Genérica al atardecer y la arquitectura neoclásica de la Facultad de Derecho.</p>
+              </div>
+              <a href="#/mapa" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Ver en Mapa</a>
             </div>
           </div>
         </div>
       </div>
     </section>
   </div>
+  <!-- /VISTA: TURISMO -->
 
-  <!-- VISTA: TRAMITES -->
+  <!-- ============================================================ -->
+  <!-- VISTA: TRÁMITES                                               -->
+  <!-- ============================================================ -->
   <div data-route-section="tramites">
     <section class="section" id="seccion-tramites" style="background-color: var(--bg-card); border-bottom: 1px solid var(--border-color);">
       <div class="container">
@@ -470,7 +575,6 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-          <!-- Card 1: Sede Principal -->
           <div class="profile-card" style="min-height: auto;">
             <div>
               <div class="profile-icon"><i data-feather="map-pin"></i></div>
@@ -484,7 +588,6 @@
             <a href="https://buenosaires.gob.ar/comuna-2" target="_blank" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 0.5rem 1rem;">Turnos GCBA <i data-feather="external-link" style="width:12px;height:12px;"></i></a>
           </div>
 
-          <!-- Card 2: Subsede Vicente López -->
           <div class="profile-card" style="min-height: auto;">
             <div>
               <div class="profile-icon"><i data-feather="file-text"></i></div>
@@ -498,7 +601,6 @@
             <a href="https://buenosaires.gob.ar/comunas/subsede-comunal-2" target="_blank" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 0.5rem 1rem;">Consultas Online <i data-feather="external-link" style="width:12px;height:12px;"></i></a>
           </div>
 
-          <!-- Card 3: Salud y Reclamos 147 -->
           <div class="profile-card" style="min-height: auto;">
             <div>
               <div class="profile-icon"><i data-feather="phone-call"></i></div>
@@ -514,17 +616,18 @@
           </div>
         </div>
 
-        <!-- Mensaje de actualización y fuente -->
         <div style="text-align: center; margin-top: 2rem; font-size: 0.75rem; color: var(--text-muted);">
-          Fuente: Sede Comunal 2 & GCBA. Datos actualizados en Julio 2026.
+          Fuente: Sede Comunal 2 &amp; GCBA. Datos actualizados en Julio 2026.
         </div>
       </div>
     </section>
   </div>
+  <!-- /VISTA: TRÁMITES -->
 
-  <!-- VISTA: HISTORIA -->
+  <!-- ============================================================ -->
+  <!-- VISTA: HISTORIA                                               -->
+  <!-- ============================================================ -->
   <div data-route-section="historia">
-    <!-- Sección Historia con Carrusel de Imágenes Locales -->
     <section class="section section-dark" id="historia">
       <div class="container">
         <div class="section-header">
@@ -533,10 +636,9 @@
         </div>
 
         <div class="history-layout">
-          <!-- Carrusel Interactivo -->
+          <!-- Carrusel de Imágenes -->
           <div class="history-slider">
             <div class="slider-container" id="slider-container">
-              <!-- Slide 1 -->
               <div class="slide-item">
                 <img src="slide_derecho.jpg" alt="Facultad de Derecho UBA">
                 <div class="slide-caption">
@@ -544,7 +646,6 @@
                   <p data-i18n="slide1_desc">El monumental edificio neoclásico inaugurado en 1949, un emblema de la educación y el civismo nacional.</p>
                 </div>
               </div>
-              <!-- Slide 2 -->
               <div class="slide-item">
                 <img src="slide_floralis.jpg" alt="Floralis Genérica en Plaza de las Naciones Unidas">
                 <div class="slide-caption">
@@ -552,7 +653,6 @@
                   <p data-i18n="slide2_desc">La escultura metálica gigante que abre y cierra sus pétalos con la luz solar, símbolo de la vanguardia barrial.</p>
                 </div>
               </div>
-              <!-- Slide 3 -->
               <div class="slide-item">
                 <img src="slide_gomero.jpg" alt="Gomeros Históricos en Plaza Francia">
                 <div class="slide-caption">
@@ -560,22 +660,18 @@
                   <p data-i18n="slide3_desc">Plantados en el siglo XIX, sus ramas gigantescas y raíces esculpen el paisaje verde del barrio.</p>
                 </div>
               </div>
-              <!-- Slide 4 -->
               <div class="slide-item">
-                <img src="slide_paris.jpg" alt="Sede social o arquitectura típica">
+                <img src="slide_paris.jpg" alt="Arquitectura francesa en Recoleta">
                 <div class="slide-caption">
                   <h4 data-i18n="slide4_title">La "París de Sudamérica"</h4>
                   <p data-i18n="slide4_desc">Esquinas y palacetes aristocráticos que recrean la arquitectura clásica francesa del siglo XIX.</p>
                 </div>
               </div>
             </div>
-
-            <!-- Controles del Slider -->
             <div class="slider-controls">
               <button class="slider-btn" id="prev-slide" aria-label="Anterior"><i data-feather="chevron-left"></i></button>
               <button class="slider-btn" id="next-slide" aria-label="Siguiente"><i data-feather="chevron-right"></i></button>
             </div>
-            <!-- Dots de navegación -->
             <div class="slider-dots" id="slider-dots">
               <button class="slider-dot active" data-slide="0" aria-label="Slide 1"></button>
               <button class="slider-dot" data-slide="1" aria-label="Slide 2"></button>
@@ -589,13 +685,70 @@
             <h3 style="font-size: 2.2rem; line-height: 1.25; margin-bottom: 1rem;" data-i18n="history_title_text">Un barrio con alma propia</h3>
             <p class="history-p" data-i18n="history_p1">El barrio debe su nombre a los padres recoletos de la Orden de los Franciscanos Descalzos, quienes a comienzos del siglo XVIII se establecieron en la zona fundando un convento y la iglesia de Nuestra Señora del Pilar, la cual aún hoy se yergue esplendorosa.</p>
             <p class="history-p" data-i18n="history_p2">Con la epidemia de fiebre amarilla de 1871, las familias más acaudaladas migraron desde el sur de la ciudad hacia el norte, eligiendo Recoleta por su altura y salubridad. Construyeron magníficos palacios de inspiración francesa, muchos de ellos hoy embajadas, hoteles de gran lujo o monumentos históricos.</p>
-            <a href="#" class="btn btn-accent" style="align-self: flex-start; margin-top: 1rem;" data-i18n="history_btn_gallery">Explorar Galería Completa</a>
+            <a href="#/noticias" class="btn btn-accent" style="align-self: flex-start; margin-top: 1rem;" data-i18n="history_btn_gallery">Explorar Biblioteca Histórica</a>
           </div>
         </div>
 
-        <!-- Banner de Comercios Locales (Sponsors) -->
+        <!-- Línea de Tiempo Histórica -->
+        <!-- [DATOS FIJOS — basados en referencias históricas verificadas] -->
+        <div style="margin-top: 3.5rem;">
+          <h3 style="font-family: var(--font-title); font-size: 1.5rem; color: #fff; margin-bottom: 2rem; text-align: center; opacity: 0.9;">Hitos que dieron forma al barrio</h3>
+          <div class="history-timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-year">1580</div>
+              <div class="timeline-content">
+                <h4 class="timeline-title">Tierras originales</h4>
+                <p class="timeline-desc">Tras la segunda fundación de Buenos Aires por Juan de Garay, las tierras del actual Recoleta forman parte de las primeras mercedes y chacras de la ciudad colonial.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">1732</div>
+              <div class="timeline-content">
+                <h4 class="timeline-title">Basílica Nuestra Señora del Pilar</h4>
+                <p class="timeline-desc">Se inaugura la iglesia fundada por los padres recoletos franciscanos, uno de los templos coloniales mejor conservados de la Ciudad de Buenos Aires. Aún hoy en pie.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">1822</div>
+              <div class="timeline-content">
+                <h4 class="timeline-title">Cementerio de la Recoleta</h4>
+                <p class="timeline-desc">El gobernador Martín Rodríguez ordena la construcción del primer cementerio público de Buenos Aires, contiguo a la Basílica del Pilar. Hoy es uno de los más visitados del mundo.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">1896</div>
+              <div class="timeline-content">
+                <h4 class="timeline-title">Museo Nacional de Bellas Artes</h4>
+                <p class="timeline-desc">Se funda el Museo Nacional de Bellas Artes, que alberga la colección de arte público más importante de América Latina, con más de 12.000 obras de arte.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">1910</div>
+              <div class="timeline-content">
+                <h4 class="timeline-title">Plaza Francia y el Centenario</h4>
+                <p class="timeline-desc">En el marco de los festejos del Centenario de la Revolución de Mayo, se inauguran la Plaza Francia y los monumentos donados por la colectividad francesa, que aún adornan el barrio.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">1980</div>
+              <div class="timeline-content">
+                <h4 class="timeline-title">Centro Cultural Recoleta</h4>
+                <p class="timeline-desc">El antiguo convento franciscano es transformado en el Centro Cultural Recoleta, convirtiéndose en uno de los espacios culturales más activos y convocantes de Buenos Aires.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sponsors -->
         <div class="sponsor-banner">
-          <h4 class="sponsor-title" data-i18n="sponsor_title">Comercios Locales que nos apoyan</h4>
+          <h4 class="sponsor-title" data-i18n="sponsor_title">Comercios que acompañan al barrio</h4>
           <div class="sponsor-grid">
             <div class="sponsor-card">
               <div class="sponsor-card-icon"><i data-feather="coffee" style="width:20px;height:20px;"></i></div>
@@ -618,18 +771,21 @@
       </div>
     </section>
   </div>
+  <!-- /VISTA: HISTORIA -->
 
-  <!-- VISTA: MAPA -->
+  <!-- ============================================================ -->
+  <!-- VISTA: MAPA                                                   -->
+  <!-- ============================================================ -->
   <div data-route-section="mapa">
-    <!-- Sección Mapa de la Comuna -->
     <section class="section container" id="mapa" style="padding-top: 2rem !important;">
-      <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+      <div class="section-header" style="text-align: center; margin-bottom: 1rem;">
         <span class="section-subtitle" data-i18n="section_map_sub">Explorá el Barrio</span>
         <h2 class="section-title" data-i18n="section_map_title">Mapa de la Comuna 2</h2>
+        <p style="max-width: 650px; margin: 0.75rem auto 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Ubicaciones clave para vecinos y visitantes: instituciones, museos, hospitales, universidades, plazas, hoteles y comercios del barrio.</p>
       </div>
 
-      <!-- Filtros de Recorridos Recomendados (Itinerarios) -->
-      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
+      <!-- Filtros de Recorridos -->
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1.25rem; flex-wrap: wrap;">
         <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-dark); align-self: center; margin-right: 0.5rem;">Itinerarios Temáticos:</span>
         <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 6px;" onclick="selectMapItinerary('historico')"><i data-feather="compass" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Histórico</button>
         <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 6px;" onclick="selectMapItinerary('cultural')"><i data-feather="image" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Cultural</button>
@@ -637,30 +793,27 @@
         <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 6px;" onclick="selectMapItinerary('gratis')"><i data-feather="sun" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Gratis</button>
         <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-color: var(--primary-color); border-radius: 6px;" onclick="clearMapItinerary()"><i data-feather="trash-2" style="width:12px;height:12px;vertical-align:middle;margin-right:2px;"></i> Limpiar Ruta</button>
       </div>
-      
-      <!-- Filtros del Mapa por Categorías -->
+
+      <!-- Filtros por Categoría -->
       <div class="map-filters" id="map-filters-container" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
         <button class="map-filter-btn active" data-map-filter="all" style="background-color: var(--primary-color); color: #fff; border: 1px solid var(--primary-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 600;">Todos (100)</button>
-        <button class="map-filter-btn" data-map-filter="educacion" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Educación</button>
-        <button class="map-filter-btn" data-map-filter="embajada" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Embajadas y Palacios</button>
-        <button class="map-filter-btn" data-map-filter="cultura" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Cultura y Templos</button>
-        <button class="map-filter-btn" data-map-filter="plazas" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Plazas y Monumentos</button>
-        <button class="map-filter-btn" data-map-filter="gastronomia" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Gastronomía</button>
-        <button class="map-filter-btn" data-map-filter="salud" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Salud</button>
-        <button class="map-filter-btn" data-map-filter="compras" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">Paseos y Hoteles</button>
+        <button class="map-filter-btn" data-map-filter="educacion" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">🎓 Educación</button>
+        <button class="map-filter-btn" data-map-filter="embajada" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">🏛️ Embajadas</button>
+        <button class="map-filter-btn" data-map-filter="cultura" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">🎭 Cultura</button>
+        <button class="map-filter-btn" data-map-filter="plazas" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">🌳 Plazas</button>
+        <button class="map-filter-btn" data-map-filter="gastronomia" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">🍽️ Gastronomía</button>
+        <button class="map-filter-btn" data-map-filter="salud" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">🏥 Salud</button>
+        <button class="map-filter-btn" data-map-filter="compras" style="background: none; border: 1px solid var(--border-color); padding: 0.4rem 1.25rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); font-weight: 500; color: var(--primary-color);">🏨 Hoteles</button>
       </div>
 
-      <!-- Wrapper del Mapa con Ficha Lateral -->
+      <!-- Mapa + Sidebar -->
       <div class="map-wrapper-layout">
-        <!-- Leaflet Map Container -->
         <div id="mapa-comunal" style="z-index: 1;"></div>
-
-        <!-- Ficha de Detalles en Sidebar -->
         <div class="map-sidebar-details" id="map-point-details">
           <div class="map-sidebar-empty" id="map-sidebar-empty-state">
             <i data-feather="map-pin" style="width: 40px; height: 40px;"></i>
             <h4 style="font-family: var(--font-title); font-size: 1.1rem; color: var(--accent-color); margin-top: 0.5rem; margin-bottom: 0.5rem;">Explorá los Puntos</h4>
-            <p style="font-size: 0.8rem; line-height: 1.4;">Hacé clic en cualquier marcador del mapa para ver los detalles históricos, fotos y cómo llegar.</p>
+            <p style="font-size: 0.8rem; line-height: 1.4;">Hacé clic en cualquier marcador del mapa para ver los detalles históricos y cómo llegar.</p>
           </div>
           <div id="map-sidebar-content-state" style="display: none;">
             <h3 class="map-point-title" id="sidebar-point-title" style="margin-top: 0;">Nombre del Lugar</h3>
@@ -683,29 +836,63 @@
         <div class="map-legend-item"><div class="map-legend-dot" style="background:#e5b800;"></div>Hoteles</div>
       </div>
       <div style="text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.75rem;">
-        <p><i data-feather="map-pin" style="width: 14px; height: 14px; vertical-align: middle; color: var(--accent-hover);"></i> <span data-i18n="map_caption">Comuna 2: Puntos destacados de <strong>Universidades, Embajadas, Cultura y Gastronomía</strong>. Fuente: Sede Comunal 2 & GCBA. Actualizado en Julio 2026.</span></p>
+        <p><i data-feather="map-pin" style="width: 14px; height: 14px; vertical-align: middle; color: var(--accent-hover);"></i>
+        <span data-i18n="map_caption">Comuna 2: 100 puntos destacados de Universidades, Embajadas, Cultura, Gastronomía, Salud y Hoteles. Fuente: Sede Comunal 2 &amp; GCBA.</span></p>
       </div>
     </section>
   </div>
+  <!-- /VISTA: MAPA -->
 
-  <!-- VISTA: PARTICIPAR -->
+  <!-- ============================================================ -->
+  <!-- VISTA: PARTICIPAR                                             -->
+  <!-- ============================================================ -->
   <div data-route-section="participar">
-    <!-- Sección Generar Contenido (Comunidad) -->
     <section class="section container" id="comunidad" style="padding-top: 2rem !important;">
       <div class="contribution-layout">
         <div class="contribution-info">
           <span class="section-subtitle" data-i18n="section_comunidad_sub">Voz Vecinal</span>
           <h3 data-i18n="section_comunidad_title" style="font-size: 2.2rem; font-family: var(--font-title); margin-bottom: 1rem; color: var(--accent-color);">¿Tenés una historia o novedad sobre Recoleta?</h3>
-          <p data-i18n="comunidad_desc" style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.6;">Este espacio digital es construido por y para los vecinos. Si presenciaste un evento, tenés fotos históricas guardadas o querés dar a conocer un comercio local, compartilo con la comunidad.</p>
-          
+          <p data-i18n="comunidad_desc" style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.6;">Este espacio digital es construido por y para los vecinos. Si presenciaste un evento, tenés fotos históricas o querés dar a conocer un comercio local, compartilo con la comunidad.</p>
+
+          <!-- Tipos de contribución -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem;">
+            <div style="padding: 0.85rem 1rem; background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; cursor: pointer;" onclick="document.getElementById('contrib-category').value='noticias'; document.getElementById('contrib-title').focus();">
+              <i data-feather="bell" style="width:16px; height:16px; color: var(--primary-color); flex-shrink:0;"></i>
+              <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-dark);">Enviar novedad</span>
+            </div>
+            <div style="padding: 0.85rem 1rem; background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; cursor: pointer;" onclick="document.getElementById('contrib-category').value='cultura'; document.getElementById('contrib-title').focus();">
+              <i data-feather="calendar" style="width:16px; height:16px; color: var(--primary-color); flex-shrink:0;"></i>
+              <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-dark);">Proponer evento</span>
+            </div>
+            <div style="padding: 0.85rem 1rem; background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; cursor: pointer;" onclick="document.getElementById('contrib-category').value='entrevistas'; document.getElementById('contrib-title').focus();">
+              <i data-feather="image" style="width:16px; height:16px; color: var(--primary-color); flex-shrink:0;"></i>
+              <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-dark);">Compartir foto histórica</span>
+            </div>
+            <div style="padding: 0.85rem 1rem; background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; cursor: pointer;" onclick="document.getElementById('contrib-category').value='noticias'; document.getElementById('contrib-title').focus();">
+              <i data-feather="map-pin" style="width:16px; height:16px; color: var(--primary-color); flex-shrink:0;"></i>
+              <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-dark);">Sumar comercio / institución</span>
+            </div>
+            <div style="padding: 0.85rem 1rem; background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 0.6rem; cursor: pointer; grid-column: span 2;" onclick="document.getElementById('contrib-category').value='noticias'; document.getElementById('contrib-title').value='Corrección: '; document.getElementById('contrib-title').focus();">
+              <i data-feather="alert-circle" style="width:16px; height:16px; color: var(--primary-color); flex-shrink:0;"></i>
+              <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-dark);">Sugerir corrección</span>
+            </div>
+          </div>
+
           <ul class="benefit-list">
             <li><i data-feather="check-circle" style="color: var(--primary-color);"></i> <span data-i18n="comunidad_benefit_1">Publicación en nuestra sección de novedades</span></li>
             <li><i data-feather="check-circle" style="color: var(--primary-color);"></i> <span data-i18n="comunidad_benefit_2">Difusión a miles de vecinos del barrio</span></li>
             <li><i data-feather="check-circle" style="color: var(--primary-color);"></i> <span data-i18n="comunidad_benefit_3">Ayuda a preservar la memoria e identidad de Recoleta</span></li>
           </ul>
 
-          <div style="margin-top: 2rem; padding: 1.5rem; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;">
-            <h4 style="font-family: var(--font-title); font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--accent-color);">¿Prefectura o contacto directo?</h4>
+          <!-- Texto de confianza editorial -->
+          <div style="margin-top: 1.5rem; padding: 1.25rem 1.5rem; background-color: var(--bg-light); border-left: 4px solid var(--primary-color); border-radius: 0 8px 8px 0;">
+            <p style="font-size: 0.85rem; color: var(--text-dark); line-height: 1.5; margin: 0;">
+              <strong>Todo contenido enviado será revisado antes de su publicación</strong> para cuidar la calidad y veracidad del portal.
+            </p>
+          </div>
+
+          <div style="margin-top: 1.5rem; padding: 1.5rem; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;">
+            <h4 style="font-family: var(--font-title); font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--accent-color);">¿Preferís contacto directo?</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem;">Envianos tu novedad directamente por WhatsApp para una revisión inmediata de nuestra redacción.</p>
             <button class="btn btn-outline" id="whatsapp-direct-btn" style="width: 100%; border-color: #25d366; color: #128c7e; gap: 0.5rem; font-size: 0.85rem;">
               <i data-feather="message-circle" style="color: #25d366;"></i> Enviar por WhatsApp
@@ -713,14 +900,14 @@
           </div>
         </div>
 
-        <!-- Formulario de Envío de Contenido -->
+        <!-- Formulario -->
         <div class="form-wrapper">
           <form id="contrib-form">
             <div class="form-group">
               <label for="contrib-name" data-i18n="form_name_label">Tu nombre / Vecino</label>
               <input type="text" id="contrib-name" class="form-control" placeholder="Ej. Juan Pérez" required>
             </div>
-            
+
             <div class="form-group">
               <label for="contrib-title" data-i18n="form_title_label">Título del Contenido</label>
               <input type="text" id="contrib-title" class="form-control" placeholder="¿De qué trata tu novedad?" required>
@@ -736,7 +923,6 @@
                   <option value="cultura" data-i18n="form_cat_cultura">Cultura / Agenda</option>
                 </select>
               </div>
-
               <div class="form-group">
                 <label for="contrib-date">Fecha del Suceso</label>
                 <input type="date" id="contrib-date" class="form-control">
@@ -767,7 +953,7 @@
 
             <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="form-submit-btn" data-i18n="form_submit">Enviar Propuesta</button>
             <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; line-height: 1.3;">
-              ⚠️ La publicación de novedades está sujeta a verificación editorial para cuidar la calidad del portal.
+              Todo contenido enviado es revisado por la redacción antes de publicarse.
             </div>
           </form>
           <div class="form-success-overlay" id="form-success">
@@ -780,8 +966,9 @@
       </div>
     </section>
   </div>
+  <!-- /VISTA: PARTICIPAR -->
 
-  <!-- Publicidad Leaderboard (Sponsor acompañando al pie de página) -->
+  <!-- Publicidad: Comercios que acompañan al barrio -->
   <div class="ad-leaderboard" style="margin-top: 3.5rem; margin-bottom: 0;">
     <div class="ad-wrapper" id="top-ad">
       <span class="ad-tag" data-i18n="ad_text">Publicidad</span>
@@ -793,7 +980,7 @@
     </div>
   </div>
 
-  <!-- Botón Fijo Mobile para enviar novedad -->
+  <!-- Botón Fijo Mobile: Enviar novedad -->
   <button class="mobile-sticky-btn" onclick="window.location.hash = '#/participar';">
     <i data-feather="plus-circle"></i>
     <span data-i18n="nav_enviar_novedad">Enviar novedad</span>
@@ -802,27 +989,24 @@
   <!-- Footer -->
   <footer class="main-footer">
     <div class="container footer-grid">
-      <!-- Columna Información -->
       <div class="footer-about">
-        <a href="#" class="logo">Recoleta<span>.</span></a>
+        <a href="#/inicio" class="logo">Recoleta<span>.</span></a>
         <p style="margin-top: 1rem;" data-i18n="footer_desc">Una plataforma comunitaria para difundir el patrimonio cultural, arquitectónico y las novedades cotidianas del barrio de Recoleta, Ciudad Autónoma de Buenos Aires.</p>
       </div>
 
-      <!-- Columna Links -->
       <div>
         <h4 class="footer-links-title" data-i18n="footer_links_title">Enlaces Rápidos</h4>
         <ul class="footer-links">
-          <li><a href="#" class="active" data-i18n="nav_inicio">Inicio</a></li>
-          <li><a href="#noticias-entrevistas" data-i18n="nav_noticias">Noticias</a></li>
-          <li><a href="#noticias-entrevistas" data-i18n="nav_entrevistas">Entrevistas</a></li>
-          <li><a href="#como-participar" data-i18n="nav_participar_link">Participar</a></li>
-          <li><a href="#historia" data-i18n="nav_historia">Historia</a></li>
-          <li><a href="#mapa" data-i18n="nav_mapa">Mapa</a></li>
-          <li><a href="#comunidad" data-i18n="nav_comunidad">Comunidad</a></li>
+          <li><a href="#/inicio" data-i18n="nav_inicio">Inicio</a></li>
+          <li><a href="#/noticias" data-i18n="nav_noticias">Noticias</a></li>
+          <li><a href="#/agenda" data-i18n="nav_agenda">Agenda</a></li>
+          <li><a href="#/turismo" data-i18n="nav_turismo">Turismo</a></li>
+          <li><a href="#/historia" data-i18n="nav_historia">Historia</a></li>
+          <li><a href="#/mapa" data-i18n="nav_mapa">Mapa</a></li>
+          <li><a href="#/participar" data-i18n="nav_participar">Participar</a></li>
         </ul>
       </div>
 
-      <!-- Columna Newsletter -->
       <div class="footer-newsletter">
         <h4 class="footer-links-title" data-i18n="footer_newsletter_title">Boletín Vecinal</h4>
         <p data-i18n="footer_newsletter_desc">Suscribite para recibir un resumen semanal de novedades directo en tu mail.</p>
@@ -833,7 +1017,6 @@
       </div>
     </div>
 
-    <!-- Barra Inferior -->
     <div class="container footer-bottom">
       <p data-i18n="footer_copyright">&copy; 2026 Recoleta. Creado con fines ilustrativos y comunitarios.</p>
       <div class="footer-socials">
@@ -850,9 +1033,7 @@
   </button>
 
   <!-- Scripts -->
-  <!-- Leaflet JS para Mapa -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <!-- Feather Icons para iconos modernos -->
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
   <script src="articles.js"></script>
   <script src="app.js"></script>
